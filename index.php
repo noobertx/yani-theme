@@ -1,10 +1,9 @@
 <?php get_header();?>
-
 <?php if(have_posts()){ ?>
 	<?php while(have_posts()){ ?>
-		<?php the_post(){ ?>
+		<?php the_post(); ?>
 			<h2>
-				<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>"> <?php the_title(); ?></a>
+				<a href="<?php the_permalink();?>" title="<?php the_title_attribute();?>"> <?php the_title(); ?></a>
 			</h2>
 			<div>
 				Posted on 
@@ -14,7 +13,7 @@
 					</time>
 				</a>
 				By 
-				<a href="<?echo get_author_posts_ur(get_the_author_meta('ID'));?>">
+				<a href="<?echo get_author_posts_url(get_the_author_meta('ID'));?>">
 					<?php echo get_the_author();?>
 				</a>
 			</div>
@@ -26,7 +25,7 @@
 				<span class="u-screen-reader-text">About <?php the_title()?></span>
 			</a>
 	<?php }?>
-	<?php the_post_pagination(); ?>
+	<?php the_posts_pagination(); ?>
 <?php }?>
 
 <?php get_footer();?>
