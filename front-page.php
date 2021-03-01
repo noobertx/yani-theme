@@ -10,6 +10,7 @@
 <div class="square bg-dark"></div>
 
 <?php the_content();?>	
+
 </main>
 
 <?php if(is_active_sidebar('primary-sidebar')) { ?>
