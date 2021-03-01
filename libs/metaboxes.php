@@ -17,7 +17,10 @@ function _themename_post_metabox_render($post){
 	?>
 	<p>
 		<label for="_themename_hide_title"><?php esc_html_e("Hide Page Title","_themename");?></label>
-		<input type="text" name ="_themename_hide_title_field" id="_themename_hide_title" value = "<?php echo $hide_title;?>"/>
+		<select name="_themename_hide_title_field" id="_themename_hide_title">
+			<option value="" <?php echo ($hide_title=="") ? "selected" : "" ;?>>No</option>
+			<option value="yes" <?php echo ($hide_title=="yes") ? "selected" : "" ;?>>Yes</option>
+		</select>
 	</p>
 <?php } 
 
