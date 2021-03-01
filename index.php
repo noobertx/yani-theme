@@ -9,9 +9,7 @@
 <div class="square bg-acccent"></div>
 <div class="square bg-light"></div>
 <div class="square bg-dark"></div>
-<a href="#" class="nav-search-field-toggler" data-toggle="nav-search-feild">
-	<i class="far fa-search"></i> Search
-</a>
+<a href="#" class="nav-search-field-toggler js-search-trigger" data-toggle="nav-search-feild"><i class="far fa-search"></i></a>
 
 	<?php get_template_part('loop'); ?>
 </main>
