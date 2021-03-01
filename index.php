@@ -1,5 +1,7 @@
 <?php get_header();?>
-<div id="page">
+<?php $sidebarClass = (is_active_sidebar('primary-sidebar')) ? "has-sidebar" : "" ?>
+<div id="page" class="<?php echo $sidebarClass;?>">
+
 	
 <main>
 <div class="square bg-primary"></div>
@@ -40,7 +42,9 @@
 	<?php the_posts_pagination(); ?>
 <?php }?>
 </main>
+<?php if(is_active_sidebar('primary-sidebar')) { ?>
 <?php get_sidebar();?>
+<?php } ?>
 </div>
 
 <?php get_footer();?>
