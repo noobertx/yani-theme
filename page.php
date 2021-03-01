@@ -4,7 +4,8 @@
 
 <main >
 
-
+dawdawd
+<?php print_r(get_post_meta(get_the_ID(),"__themename_hide_title",false));?>
 <?php the_content();?>	
 
 </main>
