@@ -7,7 +7,7 @@
 	<?php wp_head();?>
 </head>
 <body <?php body_class();?>>
-	<header>
+	<header id="header">
 		<div class="header-main">
 			<div class="branding">				
 				<div class="square bg-primary"></div>
