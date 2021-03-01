@@ -1,11 +1,6 @@
 		<footer class="bg-dark">
-			<div id="footer-wrap" >
-				<?php for($i=0;$i<4;++$i){ ?>
-					<div class="footer-<?php echo $i;?>">						
-						<?php dynamic_sidebar( 'footer-sidebar-'.$i ); ?>
-					</div>
-				<?php } ?>
-			</div>
+				<?php get_template_part('template-parts/footer/widgets'); ?>
+				<?php get_template_part('template-parts/footer/info'); ?>
 		</footer>
 		<?php wp_footer();?>
 	</body>
