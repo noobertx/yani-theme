@@ -9,6 +9,9 @@
 	<div class="square bg-acccent"></div>
 	<div class="square bg-light"></div>
 	<div class="square bg-dark"></div>
+	<a href="#" class="nav-search-field-toggler" data-toggle="nav-search-feild">
+		<i class="far fa-search"></i> Search
+	</a>
 	<header>
 		<?php the_archive_title('<h1>','</h1>');?>
 		<?php the_archive_description('<p>','</p>');?>

@@ -9,6 +9,10 @@
 <div class="square bg-light"></div>
 <div class="square bg-dark"></div>
 
+<a href="#" class="nav-search-field-toggler" data-toggle="nav-search-feild">
+	<i class="far fa-search"></i> Search
+</a>
+
 <?php the_content();?>	
 
 </main>
