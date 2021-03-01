@@ -7,7 +7,7 @@
 <?php $hide_title = get_post_meta(get_the_ID(),"__themename_hide_title",false);?>
 
 <?php 
-if(!$hide_title ){
+if($hide_title!="yes" ){
 	the_title();
 } 
 ?>	
