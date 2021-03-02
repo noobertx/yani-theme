@@ -1,4 +1,4 @@
-<article <?php post_class('template-parts/post/content');?>>				
+<article >				
 	<h2>
 		<a href="<?php the_permalink();?>" title="<?php the_title_attribute();?>"> <?php the_title(); ?></a>
 	</h2>
