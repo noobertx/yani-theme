@@ -10,7 +10,7 @@
 	?>
 	<?php
 		if(has_tag()){ ?>
-			<?php get_template_part("template-parts/post/header");
+			<?php 
 			echo '<div class="post__tags">';					
 			$tag_list = get_the_tag_list("<ul></li>","<li></li>","<ul></ul");
 			echo $tag_list;

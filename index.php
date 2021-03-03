@@ -4,7 +4,7 @@
 
 	
 <main>
-<?php get_template_part('loop'); ?>
+<?php get_template_part('loop','single'); ?>
 </main>
 <?php if(is_active_sidebar('primary-sidebar')) { ?>
 <?php get_sidebar();?>

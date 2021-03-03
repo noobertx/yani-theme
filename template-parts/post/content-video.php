@@ -1,27 +1,46 @@
-<article >				
-	<h2>
-		<a href="<?php the_permalink();?>" title="<?php the_title_attribute();?>"> <?php the_title(); ?></a>
-	</h2>
-	<div>
-		Posted on 
-		<a href="<?php echo get_permalink()?>">
-			<time date-time="<?echo get_the_date("c");?>">
-				<?php echo get_the_date();?>
-			</time>
-		</a>
-		By 
-		<a href="<?echo get_author_posts_url(get_the_author_meta('ID'));?>">
-			<?php echo get_the_author();?>
-		</a>
-	</div>
-	<div>
-		<?php the_excerpt();?>
-	</div>
-	<a href="<?php echo  get_comments_link();?>">Comments</a>
-	
+<?php
+$content = apply_filters('the_content',get_the_content());
+	$videos = get_media_embedded_in_content(get_the_content(),array('video','object','embed','iframe'));
 
-	<a href="<?php echo get_the_permalink()?>" title="<?php the_title_attribute()?>">
-		Read More
-		<span class="u-screen-reader-text">About <?php the_title()?></span>
-	</a>
+	print_r($content);
+?>
+
+<article >				
+
+	<div class="post__inner">
+		
+			<?php if(get_the_post_thumbnail() !== "" && empty($video)){ ?>
+				<div class="post__thumbnail">
+					<?php the_post_thumbnail('large');?>
+				</div>
+			<?php } ?>
+			<?php if(!single() !== "" && !empty($videos)){ ?>
+				<div class="post__video">
+					<?php echo $videos[0];?>
+				</div>
+			<?php } ?>
+
+			<?php get_template_part("template-parts/post/header")?>
+
+			<?php if(is_single()){ ?>
+				<div class="post__content">
+					<?php the_content();?>
+					<?php wp_link_pages();?>
+				</div>
+			<?php }else { ?>
+				<div class="post__excerpt">
+					<?php the_excerpt()?>
+				</div>
+			<?php } ?>
+		</div>
+	<?php 
+		if(!is_single()) {
+			get_template_part("template-parts/post/footer");
+		} 
+		
+		if(!is_single()) {
+			_theme_readmore_link();
+		} 
+	?>
+
 </article>
