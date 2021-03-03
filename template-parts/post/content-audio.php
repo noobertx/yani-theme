@@ -1,8 +1,7 @@
 <?php
 $content = apply_filters('the_content',get_the_content());
-	$videos = get_media_embedded_in_content(get_the_content(),array('video','object','embed','iframe'));
+$audio = get_media_embedded_in_content(get_the_content(),array('audio','iframe'));
 
-	print_r($content);
 ?>
 
 <article >				
@@ -14,9 +13,9 @@ $content = apply_filters('the_content',get_the_content());
 					<?php the_post_thumbnail('large');?>
 				</div>
 			<?php } ?>
-			<?php if(!is_single() !== "" && !empty($videos)){ ?>
+			<?php if(!is_single() !== "" && !empty($audio)){ ?>
 				<div class="post__video">
-					<?php echo $videos[0];?>
+					<?php echo $audio[0];?>
 				</div>
 			<?php } ?>
 
