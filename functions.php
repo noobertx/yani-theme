@@ -7,3 +7,5 @@
 <?php require_once("libs/metaboxes.php");?>
 <?php require_once("libs/plugin-activation.php");?>
 <?php require_once("libs/comments.php");?>
+<?php require_once("libs/shortcodes.php");?>
+
