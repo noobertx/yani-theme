@@ -1,22 +1,27 @@
 <article >				
-	<h2>
-		<a href="<?php the_permalink();?>" title="<?php the_title_attribute();?>"> <?php the_title(); ?></a>
-	</h2>
-	<div>
-		Posted on 
-		<a href="<?php echo get_permalink()?>">
-			<time date-time="<?echo get_the_date("c");?>">
-				<?php echo get_the_date();?>
-			</time>
-		</a>
-		By 
-		<a href="<?echo get_author_posts_url(get_the_author_meta('ID'));?>">
-			<?php echo get_the_author();?>
-		</a>
-	</div>
-	<div>
-		<?php the_excerpt();?>
-	</div>
+
+	<div class="post__inner">
+		<?php get_template_part("template-parts/post/header")?>
+			<?php if(is_single()){ ?>
+				<div class="post__content">
+					<?php the_content();?>
+					<?php wp_link_pages();?>
+				</div>
+			<?php }else { ?>
+				<div class="post__excerpt">
+					<?php the_excerpt()?>
+				</div>
+			<?php } ?>
+		</div>
+
+	<?php get_template_part("template-parts/post/footer");?>
+
+	<?php 
+	if(!is_single()) {
+		_theme_readmore_link();
+	} 
+	?>
+
 	<a href="<?php echo  get_comments_link();?>">Comments</a>
 	
 

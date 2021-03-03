@@ -4,7 +4,7 @@
 <main>
 	<header>
 		<h1>
-			<?php printf(esc_html__("Search Results for %s","_themename"),get_search_query); ?>
+			<?php printf(esc_html__("Search Results for %s","_themename"),get_search_query()); ?>
 		</h1>
 	</header>
 	<?php get_template_part('loop'); ?>

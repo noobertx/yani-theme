@@ -8,5 +8,16 @@
 <?php require_once("libs/metaboxes.php");?>
 <?php require_once("libs/plugin-activation.php");?>
 <?php require_once("libs/comments.php");?>
-<?php require_once("libs/shortcodes.php");?>
+<?php require_once("libs/shortcodes.php");
 
+
+function _theme_readmore_link(){ ?> 
+<a href="<?php echo get_the_permalink()?>" title="<?php the_title_attribute()?>">
+		Read More
+		<span class="u-screen-reader-text">About <?php the_title()?></span>
+</a>
+<?php }
+
+function _themename_post_meta(){
+	
+}
