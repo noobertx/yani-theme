@@ -1,6 +1,13 @@
+<?php
+/*
+Template Name:Full Width Page
+*/
+
+?>
+
 <?php get_header();?>
 <?php $sidebarClass = (is_active_sidebar('primary-sidebar')) ? "has-sidebar" : "" ?>
-<div id="page" class="<?php echo $sidebarClass;?>">
+<div id="page" class="<?php echo $sidebarClass;?> full-width-page">
 
 <main >
 
@@ -18,9 +25,6 @@
 	</div>
 </main>
 
-<?php if(is_active_sidebar('primary-sidebar')) { ?>
-	<?php get_sidebar();?>
-<?php } ?>
 </div>
 
 <?php get_footer();?>
