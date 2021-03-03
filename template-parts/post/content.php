@@ -17,6 +17,9 @@
 	<div>
 		<?php the_excerpt();?>
 	</div>
+	<a href="<?php echo  get_comments_link();?>">Comments</a>
+	
+
 	<a href="<?php echo get_the_permalink()?>" title="<?php the_title_attribute()?>">
 		Read More
 		<span class="u-screen-reader-text">About <?php the_title()?></span>

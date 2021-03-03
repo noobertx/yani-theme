@@ -7,6 +7,7 @@
 	$author_website = get_the_author_meta('user_url');
 ?>
 <article >
+	
 	<h2>
 		<a href="<?php the_permalink();?>" title="<?php the_title_attribute();?>"> <?php the_title(); ?></a>
 	</h2>
@@ -42,6 +43,8 @@
 				<?php echo $author_description; ?>
 		</div>
 	</div>
+
+
 
 	<?php
 		$prev = get_previous_post();
@@ -87,6 +90,10 @@
 			<?php } ?>
 		</div>
 	</nav>
+	<?php } ?>
+
+	<?php if(comments_open() || get_comments_number()) { ?>
+		<?php comments_template();?>
 	<?php } ?>
 
 </article>
