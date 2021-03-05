@@ -8,7 +8,8 @@
 <?php require_once("libs/metaboxes.php");?>
 <?php require_once("libs/plugin-activation.php");?>
 <?php require_once("libs/comments.php");?>
-<?php require_once("libs/shortcodes.php");
+<?php require_once("libs/shortcodes.php"); ?>
+<?php require_once("libs/custom-post-types.php");
 
 
 function _theme_readmore_link(){ ?> 

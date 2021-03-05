@@ -7,14 +7,13 @@ $content = apply_filters('the_content',get_the_content());
 
 <article >				
 
-	<div class="post__inner">
-		
+	<div class="post__inner">		
 			<?php if(get_the_post_thumbnail() !== "" && empty($video)){ ?>
 				<div class="post__thumbnail">
 					<?php the_post_thumbnail('large');?>
 				</div>
 			<?php } ?>
-			<?php if(!is_single() !== "" && !empty($videos)){ ?>
+			<?php if(!is_ nsingle() !== "" && !empty($videos)){ ?>
 				<div class="post__video">
 					<?php echo $videos[0];?>
 				</div>
