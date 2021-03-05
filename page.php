@@ -6,11 +6,11 @@
 
 <?php $hide_title = get_post_meta(get_the_ID(),"__themename_hide_title",false)[0]; ?>
 	<header class="page__header">
-		<div class="page__title">
+		<div class="page__title asdasd">
 			<?php 
-				if($hide_title!="yes" ){
-					the_title();
-				} ?>	
+				if($hide_title!="yes" ){ ?>
+					<h1><?php the_title(); ?> </h1>
+				<?php  } ?>	
 		</div>
 	</header>
 	<div class="page__content">
