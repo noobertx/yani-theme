@@ -25,6 +25,66 @@
 			'gallery',
 			'audio',
 		));
+		add_theme_support( 'editor-styles' );
 		add_theme_support('align-wide');
+		add_theme_support( 'align-wide' );
+
+		add_theme_support(
+			'editor-color-palette',
+			[
+				[
+					'name'  => __( 'Primary', 'wp-rig' ),
+					'slug'  => 'theme-primary',
+					'color' => "#588157",
+				],
+				[
+					'name'  => __( 'Secondary', 'wp-rig' ),
+					'slug'  => 'theme-secondary',
+					'color' => "#A3B18A",
+				],
+                [
+					'name'  => __( 'Accent', 'wp-rig' ),
+					'slug'  => 'theme-accent',
+					'color' => '#3A5A40',
+				],
+                [
+					'name'  => __( 'Dark', 'wp-rig' ),
+					'slug'  => 'theme-dark',
+					'color' => '#344E41',
+				],
+                [
+					'name'  => __( 'Light', 'wp-rig' ),
+					'slug'  => 'theme-light',
+					'color' => '#DAD7CD',
+				],
+				[
+					'name'  => __( 'Default', 'wp-rig' ),
+					'slug'  => 'theme-default',
+					'color' => '#999',
+				],
+				[
+					'name'  => __( 'Info', 'wp-rig' ),
+					'slug'  => 'theme-info',
+					'color' => '#00bcd4',
+				],
+				[
+					'name'  => __( 'Success', 'wp-rig' ),
+					'slug'  => 'theme-success',
+					'color' => '#4caf50',
+				],
+				[
+					'name'  => __( 'Warning', 'wp-rig' ),
+					'slug'  => 'theme-warning',
+					'color' => '#ff9800',
+				],
+				[
+					'name'  => __( 'Danger', 'wp-rig' ),
+					'slug'  => 'theme-danger',
+					'color' => '#f44336',
+				],				
+			]
+		);
 	}
+
+	add_action( 'after_setup_theme', '_themename_theme_support');
 ?>
