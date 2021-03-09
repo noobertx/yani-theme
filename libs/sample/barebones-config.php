@@ -1196,13 +1196,13 @@
                 'validate' => 'color',
                 'mode'     => 'background',
             ),
-            array(
-                'id'       => 'opt-primary-text-color',
-                'type'     => 'color',
-                'output'   => array( '.text-primary-color,h1,h2,h3,h4,h5,h6,.scroll .site-title a' ),
-                'title'    => __( 'Primary Text Color', 'redux-framework-demo' ),
-                'default'  => '#e36d60',
-            ),
+            // array(
+            //     'id'       => 'opt-primary-text-color',
+            //     'type'     => 'color',
+            //     'output'   => array( '.text-primary-color,h1,h2,h3,h4,h5,h6,.scroll .site-title a' ),
+            //     'title'    => __( 'Primary Text Color', 'redux-framework-demo' ),
+            //     'default'  => '#e36d60',
+            // ),
             array(
                 'id'       => 'opt-secondary-text-color',
                 'type'     => 'color',
