@@ -8,11 +8,11 @@
   --content-width: 100vw;
   --dropdown-symbol-width: 0.7em;
   /* Custom editor colors */
-  --color-theme-primary: #457B9D;
-  --color-theme-secondary: #E63946;
-  --color-theme-accent: #A8DADC;
-  --color-theme-dark: #1D3557;
-  --color-theme-light: #E5E5E5;
+  --color-theme-primary: #FCA311;
+  --color-theme-secondary: #14213D;
+  --color-theme-accent: #E5E5E5;
+  --color-theme-dark: #000000;
+  --color-theme-light: #FFFFFF;
   --color-theme-white: #EEEEEE;
   --color-theme-default: #999;
   --color-theme-info: #00bcd4;
