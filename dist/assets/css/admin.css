@@ -3,7 +3,8 @@
   --global-font-family: "RocknRoll One", serif;
   --global-font-size: 20;
   --global-font-line-height: 1.4;
-  --highlight-font-family: "RocknRoll One", "Helvetica Neue", "Arial Narrow", sans-serif;
+  --highlight-font-family: "Slabo 27px", "Helvetica Neue", "Arial Narrow", sans-serif;
+  /*--highlight-font-family: "RocknRoll One", "Helvetica Neue", "Arial Narrow", sans-serif;*/
   --content-width: 100vw;
   --dropdown-symbol-width: 0.7em;
   /* Custom editor colors */
