@@ -35,27 +35,27 @@
 				[
 					'name'  => __( 'Primary', 'wp-rig' ),
 					'slug'  => 'theme-primary',
-					'color' => "#D62828",
+					'color' => "#457B9D",
 				],
 				[
 					'name'  => __( 'Secondary', 'wp-rig' ),
 					'slug'  => 'theme-secondary',
-					'color' => "#F77F00",
+					'color' => "#E63946",
 				],
                 [
 					'name'  => __( 'Accent', 'wp-rig' ),
 					'slug'  => 'theme-accent',
-					'color' => '#FCBF49',
+					'color' => '#A8DADC',
 				],
                 [
 					'name'  => __( 'Dark', 'wp-rig' ),
 					'slug'  => 'theme-dark',
-					'color' => '#EAE2B7',
+					'color' => '#1D3557',
 				],
                 [
 					'name'  => __( 'Light', 'wp-rig' ),
 					'slug'  => 'theme-light',
-					'color' => '#003049',
+					'color' => '#E5E5E5',
 				],
 				[
 					'name'  => __( 'Default', 'wp-rig' ),

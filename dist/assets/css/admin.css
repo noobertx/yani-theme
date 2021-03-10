@@ -3,16 +3,16 @@
   --global-font-family: "RocknRoll One", serif;
   --global-font-size: 20;
   --global-font-line-height: 1.4;
-  --highlight-font-family: "Slabo 27px", "Helvetica Neue", "Arial Narrow", sans-serif;
+  --highlight-font-family: "Open+Sans", "Helvetica Neue", "Arial Narrow", sans-serif;
   /*--highlight-font-family: "RocknRoll One", "Helvetica Neue", "Arial Narrow", sans-serif;*/
   --content-width: 100vw;
   --dropdown-symbol-width: 0.7em;
   /* Custom editor colors */
-  --color-theme-primary: #D62828;
-  --color-theme-secondary: #F77F00;
-  --color-theme-accent: #FCBF49;
-  --color-theme-dark: #003049;
-  --color-theme-light: #EAE2B7;
+  --color-theme-primary: #457B9D;
+  --color-theme-secondary: #E63946;
+  --color-theme-accent: #A8DADC;
+  --color-theme-dark: #1D3557;
+  --color-theme-light: #E5E5E5;
   --color-theme-white: #EEEEEE;
   --color-theme-default: #999;
   --color-theme-info: #00bcd4;
