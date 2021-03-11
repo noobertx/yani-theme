@@ -1,4 +1,5 @@
 <?php
+require_once("utils/lazy-load.php");
 	function _themename_theme_support(){
 		add_theme_support('title-tag');
 		add_theme_support('post-thumbnails');
@@ -35,27 +36,27 @@
 				[
 					'name'  => __( 'Primary', 'wp-rig' ),
 					'slug'  => 'theme-primary',
-					'color' => "#457B9D",
+					'color' => "#4a4e69",
 				],
 				[
 					'name'  => __( 'Secondary', 'wp-rig' ),
 					'slug'  => 'theme-secondary',
-					'color' => "#E63946",
+					'color' => "#c9ada7",
 				],
                 [
 					'name'  => __( 'Accent', 'wp-rig' ),
 					'slug'  => 'theme-accent',
-					'color' => '#A8DADC',
+					'color' => '#9a8c98',
 				],
                 [
 					'name'  => __( 'Dark', 'wp-rig' ),
 					'slug'  => 'theme-dark',
-					'color' => '#1D3557',
+					'color' => '#22223b',
 				],
                 [
 					'name'  => __( 'Light', 'wp-rig' ),
 					'slug'  => 'theme-light',
-					'color' => '#E5E5E5',
+					'color' => '#f2e9e4',
 				],
 				[
 					'name'  => __( 'Default', 'wp-rig' ),
