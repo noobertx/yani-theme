@@ -16,6 +16,16 @@ class Yani_Plugins {
             	'name'      => __('Custom Post Type', '__theme_name'),
             	'slug'      => 'custom-post-type-ui',
             	'required'  => false,
+        	),
+        	array(
+            	'name'      => __('Recent Post Widget Extended', '__theme_name'),
+            	'slug'      => 'recent-posts-widget-extended',
+            	'required'  => false,
+        	),
+        	array(
+            	'name'      => __('WooCommerce', '__theme_name'),
+            	'slug'      => 'woocommerce',
+            	'required'  => false,
         	)
         );
         
