@@ -31,7 +31,7 @@ class Yani_LazyLoad {
 		add_action( 'wp_enqueue_scripts', [ $this, 'action_enqueue_lazyload_assets' ] );
 
 		// Do not lazy load avatar in admin bar.
-		add_action( 'admin_bar_menu', [ $this, 'action_remove_lazyload_filters' ], 0 );
+		// add_action( 'admin_bar_menu', [ $this, 'action_remove_lazyload_filters' ], 0 );
 		add_filter( 'wp_kses_allowed_html', [ $this, 'filter_allow_lazyload_attributes' ] );
 	}
 
@@ -209,5 +209,5 @@ class Yani_LazyLoad {
 
 }
 
-new Yani_LazyLoad();
+// new Yani_LazyLoad(); // Temportary disabled because of plugin conflict
 ?>
