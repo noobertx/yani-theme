@@ -1064,6 +1064,30 @@
     ) );
 
     Redux::setSection( $opt_name, array(
+        'title'            => __( 'Advance Block Settings', 'redux-framework-demo' ),
+        'id'               => 'advance-block-options',
+        'desc'             => __( '', 'redux-framework-demo' ),
+        'customizer_width' => '400px',
+        'icon'             => 'el el-th'
+    ) );
+
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Call To Action', 'redux-framework-demo' ),
+        'id'         => 'call-to-action-settings',
+        'desc'       => '',
+        'subsection' => true,
+        'fields'     => array(
+            array(
+                'id'       => 'opt-zipcodes-multitext',
+                'type'     => 'text',
+                'title'    => __( 'Zip Codes', 'redux-framework-demo' ),
+                'desc'     => __( 'separate each item by adding comma(,)', 'redux-framework-demo' ),
+            ),
+        )
+    ) );
+
+
+    Redux::setSection( $opt_name, array(
         'title'            => __( 'White Label', 'redux-framework-demo' ),
         'id'               => 'white-label-options',
         'desc'             => __( '', 'redux-framework-demo' ),
