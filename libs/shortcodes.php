@@ -23,12 +23,14 @@
 		extract(shortcode_atts([
 			"id" => "",
 			"title" => "Check Our Delivery Areas",
+			"link" => "#",
+			"button_text" => "PICK YOUR BOX",
 			"label" => ""
 		],$atts,$tag));
 
 		ob_start(); ?>
 		<div class="yani-delivery-areas text-center">			
-			<h2>Check Our Delivery Areas</h2>
+			<h2><?php echo $title;?></h2>
 			<div class="delivery-area-status"></div>
 			<div action="#" method="POST" id="frm-check-service-area">
 				<input class="form-control" data-val="true" data-val-regex="Please specify a valid Zip Code." data-val-regex-pattern="^\d{5}(-\d{4})?$" data-val-required="The Zip Code field is required." id="postal-code" name="postalCode" placeholder="Enter your zip code" type="text" value="">
@@ -37,8 +39,19 @@
 		</div>
 			
 		<?php
+		yani_delivery_banner_cta($link,$button_text);
 		$output_string =  ob_get_contents();
 		ob_end_clean();
 		return $output_string;
 	}
+
+	function yani_delivery_banner_cta($link,$button_text){ ?>
+		<div class="yani-delivery-areas-banner text-center">		
+			<h2>Customizable Produce & Grocery Boxes</h2>
+			<h3 class="secondary">FOR TUESDAY DELIVERY</h3>
+			<a href="#" id="btn-change-location">Change Location &raquo;</a>
+
+			<a href="<?php echo $link;?>" class="btn btn-block bg-primary white"><?php echo $button_text;?></a>
+		</div>
+	<?php }
 ?>
