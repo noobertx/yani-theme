@@ -1,1 +1,1 @@
-All rights reserved
+<div class="info-wrap bg-dark light">All rights reserved</div>
