@@ -22,3 +22,5 @@ function _theme_readmore_link(){ ?>
 function _themename_post_meta(){
 	
 }
+
+
