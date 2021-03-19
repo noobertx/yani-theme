@@ -1,9 +1,9 @@
 :root {
   --global-font-color: #333;
-  --global-font-family: "RocknRoll One", serif;
+  --global-font-family: "Roboto", sans-serif;
   --global-font-size: 20;
   --global-font-line-height: 1.4;
-  --highlight-font-family: "Open+Sans", "Helvetica Neue", "Arial Narrow", sans-serif;
+  --highlight-font-family: "Roboto", "Helvetica Neue", "Arial Narrow", sans-serif;
   /*--highlight-font-family: "RocknRoll One", "Helvetica Neue", "Arial Narrow", sans-serif;*/
   --content-width: 100vw;
   --dropdown-symbol-width: 0.7em;
