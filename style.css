@@ -26,3 +26,10 @@ body{}
     max-width: 1140px;
     margin: auto;
 }
+
+.main-content {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    max-width: 1140px;
+    margin: auto;
+}
