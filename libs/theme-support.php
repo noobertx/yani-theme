@@ -85,6 +85,8 @@ require_once("utils/lazy-load.php");
 				],				
 			]
 		);
+
+		add_theme_support( 'woocommerce' );
 	}
 
 	add_action( 'after_setup_theme', '_themename_theme_support');
