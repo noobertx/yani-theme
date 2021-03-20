@@ -12,3 +12,17 @@ Tags: translation-ready, simple
 
 */
 body{}
+
+.size-auto,
+.size-full,
+.size-large,
+.size-medium,
+.size-thumbnail{
+	max-width: 100%;
+	height: auto;
+}
+
+.content-area {
+    max-width: 1140px;
+    margin: auto;
+}

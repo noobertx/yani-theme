@@ -99,9 +99,14 @@ require_once("utils/lazy-load.php");
 			),
 		) );
 
-		add_theme_support('wc-product-gallery-zoom');
-		add_theme_support('wc-product-gallery-lightbox');
-		add_theme_support('wc-product-gallery-slider');
+		add_theme_support( 'wc-product-gallery-zoom' );
+    	add_theme_support( 'wc-product-gallery-lightbox' );
+	    add_theme_support( 'wc-product-gallery-slider' );
+
+	    if(!isset($content_width)){
+	    	$content_width = 600;
+	    }
+
 	}
 
 	add_action( 'after_setup_theme', '_themename_theme_support');
