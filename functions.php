@@ -11,6 +11,7 @@
 <?php require_once("libs/shortcodes.php"); ?>
 <?php require_once("libs/custom-post-types.php");
 
+require_once("libs/woocommerce.php"); 
 
 function _theme_readmore_link(){ ?> 
 <a href="<?php echo get_the_permalink()?>" title="<?php the_title_attribute()?>">
