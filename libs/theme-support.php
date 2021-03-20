@@ -95,7 +95,7 @@ require_once("utils/lazy-load.php");
 				'max_rows' => 10,
 				'default_columns' => 3,
 				'min_columns' => 3,
-				'max_columns' => 1,
+				'max_columns' => 5,
 			),
 		) );
 
