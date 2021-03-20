@@ -110,4 +110,7 @@ require_once("utils/lazy-load.php");
 	}
 
 	add_action( 'after_setup_theme', '_themename_theme_support');
+	
+	/*28*/
+	add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 ?>
