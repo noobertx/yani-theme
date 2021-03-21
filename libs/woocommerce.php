@@ -6,9 +6,13 @@
 	}
 
 
-	if(is_product_tag()){
+	if(!is_product_tag()){
 
 	remove_action('woocommerce_sidebar','woocommerce_get_sidebar');
+	}
+
+	if(is_cart()){
+		echo "This is the cart page";
 	}
 
 	if(is_product_tag()){

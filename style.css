@@ -35,4 +35,22 @@ body{}
 	    max-width: 1140px;
 	    margin: auto;
 	}
+
+	#header .navbar-expand-md .navbar-nav {
+    	margin: 0;
+	}
+
+	ul#menu-menu-1 {
+    margin: 0;
+	}
+
+	.navigation-wrap {
+	    width: 98vw!important;
+	    margin: auto;
+	    display: flex;
+	}
+
+	.navigation-wrap .container-fluid {
+	    padding: 0;
+	}
 }
