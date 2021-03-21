@@ -23,9 +23,9 @@
 					<div class="account col-12 d-md-none">Account</div>
 					<div class="navigation-wrap">			
 						<div class="navigation">
-							<div class="container">
-								<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+							<div class="">
+								<nav class="navbar navbar-expand-lg">
+  <div class="">
     <button 
     class="navbar-toggler" 
     type="button" 
