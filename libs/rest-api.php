@@ -12,18 +12,36 @@ function postSearchResults($data){
       global $wpdb;
       $mainQuery = new WP_Query(array(
         's' => sanitize_text_field($data['term']),
+        'post_type' => 'post',
         'posts_per_page' => -1
       ));
 
       $result = array();
-
+      $result['posts'] = array();
       while($mainQuery->have_posts()) {
         $mainQuery->the_post();
-        array_push($result, array(
+        array_push($result['posts'], array(
           'title' => get_the_title(),
           'permalink' => get_the_permalink(),
           'image' => get_the_post_thumbnail_url(get_the_ID())
         ));
+      }
+
+      if(class_exists('woocommerce')){
+        $mainQuery = new WP_Query(array(
+          's' => sanitize_text_field($data['term']),
+          'post_type' => 'product',
+          'posts_per_page' => -1
+        ));
+        $result['products'] = array();
+        while($mainQuery->have_posts()) {
+          $mainQuery->the_post();
+          array_push($result['products'], array(
+            'title' => get_the_title(),
+            'permalink' => get_the_permalink(),
+            'image' => get_the_post_thumbnail_url(get_the_ID())
+          ));
+        }
       }
       return $result;
 }
