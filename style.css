@@ -56,3 +56,17 @@ body{}
 }
 
 
+a.cart-customlocation {
+    position: relative;
+}
+
+a.cart-customlocation .items {
+    position: absolute;
+    font-size: 12px;
+    left: 20px;
+    top: -10px;
+    background: red;
+    padding: 2px 5px;
+    color: #fff;
+    border-radius: 50%;
+}

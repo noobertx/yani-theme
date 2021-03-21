@@ -30,4 +30,19 @@
 		}
 
 	}
+
+add_filter( 'woocommerce_add_to_cart_fragments', '_theme_name_woocommerce_header_add_to_cart_fragment' );
+
+function _theme_name_woocommerce_header_add_to_cart_fragment( $fragments ) {
+	global $woocommerce;
+
+	ob_start();
+
+	?>
+		<span class="items">
+			<?php echo sprintf(_n('%d', '%d', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?> </span> 
+	<?php
+	$fragments['a.cart-customlocation span.items'] = ob_get_clean();
+	return $fragments;
+}
 ?>
