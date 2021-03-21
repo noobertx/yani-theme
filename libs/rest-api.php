@@ -23,7 +23,7 @@ function postSearchResults($data){
         array_push($result['posts'], array(
           'title' => get_the_title(),
           'permalink' => get_the_permalink(),
-          'image' => get_the_post_thumbnail_url(get_the_ID())
+          'image' => get_the_post_thumbnail_url(get_the_ID(),'thumbnail')
         ));
       }
 
@@ -39,7 +39,7 @@ function postSearchResults($data){
           array_push($result['products'], array(
             'title' => get_the_title(),
             'permalink' => get_the_permalink(),
-            'image' => get_the_post_thumbnail_url(get_the_ID())
+            'image' => get_the_post_thumbnail_url(get_the_ID(),'thumbnail')
           ));
         }
       }
