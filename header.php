@@ -40,7 +40,7 @@
 			wp_nav_menu(
 				array(
 					'theme_location'	=> 'main-menu',
-					'depth'				=> 4,
+					'depth'				=> 2,
 					'container'			=> 'div',
 					'container_class'	=> 'collapse navbar-collapse',
 					'container_id'		=> 'bs-example-navbar-collapse-1',
@@ -88,7 +88,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="header-widget-wrap col-12">
+				<div class="header-widget-wrap">
 					<a href="#" class="nav-search-field-toggler js-search-trigger" data-toggle="nav-search-feild">
 						<i class="far fa-search"></i>
 					</a>
