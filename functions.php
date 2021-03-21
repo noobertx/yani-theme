@@ -11,6 +11,8 @@
 <?php require_once("libs/shortcodes.php"); ?>
 <?php require_once("libs/custom-post-types.php");
 
+require_once("libs/class-wp-bootstrap-navwalker.php");
+
 
 // if(class_exists('WooCommerce')){
 	require_once("libs/woocommerce.php"); 

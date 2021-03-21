@@ -21,12 +21,39 @@
 			<div class="navigation-wrap">			
 				<div class="navigation">
 					<div class="container">
-						<nav class="header-nav" role="navigation" aria-label="<?php esc_html__('Main Navigation','__theme_name')?>">
-							<?php 
-								wp_nav_menu(array('theme_location'=>'main-menu'));
-							?>
+						<nav class="header-nav navbar navbar-expand-md" role="navigation">
+								<button 
+								class="navbar-toggler" 
+								type="button" 
+								data-toggle="collapse" 
+								data-target="#bs-example-navbar-collapse-1"
+								aria-controls="bs-example-navbar-collapse-1"
+								aria-expanded="false"
+								aria-label="Toggle navigation"
+								>									
+									<span class="navbar-toggler-icon"></span>
+								</button>							
+								<?php
+									wp_nav_menu(
+										array(
+											'theme_location'	=> 'main-menu',
+											'depth'				=> 2,
+											'container'			=> 'div',
+											'container_class'	=> 'collapse navbar-collapse',
+											'container_id'		=> 'bs-example-navbar-collapse-1',
+											'menu_class'		=> 'nav navbar-nav',
+											'fallback_cb'		=> 'WP_Bootstrap_Navwalker::fallback',
+											'walker' 			=> new WP_Bootstrap_Navwalker()
+										)
+									);
+								?>
 						</nav>
 					</div>
+						<!-- <nav class="header-nav" role="navigation" aria-label="<?php esc_html__('Main Navigation','__theme_name')?>">
+							<?php 
+							//	wp_nav_menu(array('theme_location'=>'main-menu'));
+							?>
+						</nav> -->
 				</div>
 			</div>
 			<div class="header-widget-wrap">
