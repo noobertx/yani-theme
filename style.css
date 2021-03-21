@@ -54,3 +54,23 @@ body{}
 	    padding: 0;
 	}
 }
+
+
+.header-widget-wrap {
+    z-index: 9;
+}
+
+/*Search*/
+
+ul.result-posts-list li a {
+    display: flex;
+    align-items: center;
+}
+
+ul.result-posts-list {
+    margin: 0;
+}
+
+ul.result-posts-list li span.professor-card__name {
+    padding: 0 10px;
+}
