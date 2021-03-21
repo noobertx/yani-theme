@@ -92,6 +92,12 @@
 					<a href="#" class="nav-search-field-toggler js-search-trigger" data-toggle="nav-search-feild">
 						<i class="far fa-search"></i>
 					</a>
+					<a class="cart-customlocation" href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>"><?php echo sprintf ( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?> – <?php echo WC()->cart->get_cart_total(); ?></a>
+
+					<!-- <div class="cart">
+						<a href="<?php echo wc_get_cart_url();?>"><span class="cart-icon"></span></a>
+						<span class="items"><?php echo WC()->cart->get_cart_contents_count();?></span>
+					</div> -->
 				</div>
 			</div>	
 		</div>
