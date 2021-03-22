@@ -103,7 +103,7 @@
 						</a>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>" >My Account</a>
-							<a href="<?php echo esc_url(wp_logout_url(get_option('woocommerce_myaccount_page_id'))); ?>" >Logout</a>
+							<a href="<?php echo esc_url(wp_logout_url(get_permalink(get_option('woocommerce_myaccount_page_id')))); ?>" >Logout</a>
 						</div>
 					</div>
 
