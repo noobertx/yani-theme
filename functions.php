@@ -10,11 +10,12 @@
 <?php require_once("libs/comments.php");?>
 <?php require_once("libs/shortcodes.php"); ?>
 <?php require_once("libs/custom-post-types.php");
+ require_once("libs/theme-customizer.php");
 
 require_once("libs/class-wp-bootstrap-navwalker.php");
 
 
-// if(class_exists('WooCommerce')){
+// if(class_exists('WooCommerce')){11
 	require_once("libs/woocommerce.php"); 
 // }
 
