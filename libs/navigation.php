@@ -11,9 +11,9 @@ function _themename_dropdown_icon($title,$item,$args,$depth){
 	if($args->theme_location == 'main-menu'){
 		if(in_array("menu-item-has-children",$item->classes)){
 			if($depth == 0){
-				$title .= "<i class='fas fa-angle-down' aria-hidden='true'></i>";
+				// $title .= "<i class='fas fa-angle-down' aria-hidden='true'></i>";
 			}else{
-				$title .= "<i class='fa fa-angle-down' aria-hidden='true'></i>";
+				// $title .= "<i class='fa fa-angle-down' aria-hidden='true'></i>";
 			}
 		}
 	}
