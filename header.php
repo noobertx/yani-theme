@@ -18,9 +18,8 @@
 					<div class="square bg-dark"></div>
 				</div>
 			</div>
-			<div class="header-bottom col-12 col-lg-11">	
-				<div class="row">		
-					<div class="account col-12 d-md-none">Account</div>
+			<div class="header-bottom col-10 col-lg-10">	
+				<div class="row">	
 					<div class="navigation-wrap">			
 						<div class="navigation">
 							<div class="">
@@ -97,6 +96,9 @@
 						<i class="far fa-shopping-cart"></i>
 						<span class="items"></span>
 					</a>
+
+					<a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>" class="nav-link"><i class="far fa-user"></i></a>
+
 				</div>
 			</div>	
 		</div>
