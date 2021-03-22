@@ -92,6 +92,7 @@
 						<i class="far fa-search"></i>
 					</a>
 
+					<?php if(class_exists('woocommerce')) { ?>
 					<a class="cart-customlocation" href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
 						<i class="far fa-shopping-cart"></i>
 						<span class="items"></span>
@@ -102,10 +103,15 @@
 							<i class="far fa-user"></i>
 						</a>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<?php if(is_user_logged_in()) { ?>
 							<a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>" >My Account</a>
 							<a href="<?php echo esc_url(wp_logout_url(get_permalink(get_option('woocommerce_myaccount_page_id')))); ?>" >Logout</a>
+							<?php }else{ ?>
+							<a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>" >Sign In</a>
+							<?php } ?>
 						</div>
 					</div>
+					<?php } ?>
 
 
 				</div>
