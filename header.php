@@ -97,7 +97,7 @@
 						<span class="items"></span>
 					</a>
 
-					<a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>" class="nav-link"><i class="far fa-user"></i></a>
+					<a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>" ><i class="far fa-user"></i></a>
 
 				</div>
 			</div>	
