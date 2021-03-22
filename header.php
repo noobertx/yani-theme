@@ -10,12 +10,21 @@
 	<header id="header">
 		<div class="row">
 			<div class="header-main brand col-md-3 col-12 col-lg-3 text-center text-md-left">
-				<div class="branding">				
+				<div class="branding">	
+					<?php
+						if( function_exists( 'the_custom_logo' ) ) {
+						    if(has_custom_logo()) {
+						        the_custom_logo();
+						    } else { ?>		        
+						    	
 					<div class="square bg-primary"></div>
 					<div class="square bg-secondary"></div>
 					<div class="square bg-accent"></div>
 					<div class="square bg-light"></div>
 					<div class="square bg-dark"></div>
+						    <?php }
+						}
+					?>
 				</div>
 			</div>
 			<div class="header-bottom col-10 col-lg-10">	
