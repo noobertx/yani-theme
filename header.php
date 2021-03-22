@@ -97,10 +97,10 @@
 						<span class="items"></span>
 					</a>
 					
-					<div class="dropdown">
-						<button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton">
+					<div class="dropdown _theme_name-account">
+						<a href = "#" class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton">
 							<i class="far fa-user"></i>
-						</button>
+						</a>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>" >My Account</a>
 							<a href="<?php echo esc_url(wp_logout_url(get_option('woocommerce_myaccount_page_id'))); ?>" >Logout</a>

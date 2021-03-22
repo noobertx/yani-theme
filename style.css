@@ -70,3 +70,8 @@ a.cart-customlocation .items {
     color: #fff;
     border-radius: 50%;
 }
+
+._theme_name-account .dropdown-menu.show{
+	display: flex;
+	flex-direction: column;
+}
