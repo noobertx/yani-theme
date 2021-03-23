@@ -46,7 +46,7 @@ Template Name:Woocommerce Homepage Page
 											<div class="subtitle">
 												<?php //the_excerpt();?>
 											</div>
-											<a href="<?php echo $slider_button_url[$j] ?>" class="link"><?php echo $slider_button_text[$j] ?></a>
+											<a href="<?php echo $slider_button_url[$j] ?>" class="btn bg-secondary light"><?php echo $slider_button_text[$j] ?></a>
 										</div>
 									</div>
 								</div>
