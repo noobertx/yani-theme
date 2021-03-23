@@ -1,6 +1,7 @@
 <?php
 
 function yani_assets(){
+	wp_enqueue_style( 'yani-theme', get_template_directory_uri().'/style.css' );
 	wp_enqueue_style("yani-stylesheet",get_template_directory_uri()."/dist/assets/css/bundle.css",array(),microtime(),"all");
 	wp_enqueue_style( 'font-awesome',"//kit-pro.fontawesome.com/releases/latest/css/pro.min.css" , array(),"5.13.0", 'all');
 
