@@ -75,3 +75,10 @@ a.cart-customlocation .items {
 	display: flex;
 	flex-direction: column;
 }
+
+
+section.main-slider .container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
