@@ -82,3 +82,17 @@ section.main-slider .container {
     align-items: center;
     height: 100%;
 }
+
+section.main-slider .slick-next{
+	right: 20px;
+	z-index: 9;
+}
+section.main-slider .slick-prev{
+	left: 20px;
+	z-index: 9;
+}
+
+section.main-slider .slick-prev:before, 
+section.main-slider .slick-next:before{
+	font-size: 30px;
+}
