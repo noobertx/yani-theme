@@ -63,9 +63,13 @@ Template Name:Woocommerce Homepage Page
 		<?php
 			$popular_limit 		= get_theme_mod('max_popular_num',4);
 			$popular_cols 		= get_theme_mod('max_popular_cols',4);
+			$popular_cols  = ($popular_cols <= 0) ? $popular_cols : 1;
 			$new_arrival_limit 		= get_theme_mod('max_new_products_num',4);
 			$new_arrival_cols 		= get_theme_mod('max_new_products_cols',4);
+			$new_arrival_cols  = ($new_arrival_cols <= 0) ? $new_arrival_cols : 1;
 		?>
+
+		<?php if($popular_limit!=0): ?>
 		<section class="popular-products">
 			<div class="container">
 				<h2>Popular Products</h2>
@@ -74,7 +78,9 @@ Template Name:Woocommerce Homepage Page
 				</div>
 			</div>
 		</section>
+		<?php endif;?>
 
+		<?php if($new_arrival_limit!=0): ?>
 		<section class="new-arrivals">
 			<div class="container">
 				<h2>New Arrivals</h2>
@@ -83,6 +89,7 @@ Template Name:Woocommerce Homepage Page
 				</div>
 			</div>
 		</section>
+		<?php endif;?>
 
 		<?php the_content();?>
 	</div>
