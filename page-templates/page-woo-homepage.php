@@ -77,6 +77,8 @@ Template Name:Woocommerce Homepage Page
 				</div>
 			</div>
 		</section>
+
+		<?php the_content();?>
 	</div>
 </main>
 
