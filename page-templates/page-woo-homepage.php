@@ -60,11 +60,17 @@ Template Name:Woocommerce Homepage Page
 	</section>	
 
 	<div class="page__content">
+		<?php
+			$popular_limit 		= get_theme_mod('max_popular_num',4);
+			$popular_cols 		= get_theme_mod('max_popular_cols',4);
+			$new_arrival_limit 		= get_theme_mod('max_new_products_num',4);
+			$new_arrival_cols 		= get_theme_mod('max_new_products_cols',4);
+		?>
 		<section class="popular-products">
 			<div class="container">
 				<h2>Popular Products</h2>
 				<div class="row">
-					<?php echo do_shortcode('[products limit="4" orderby="popularity" columns="4"] ');?>
+					<?php echo do_shortcode('[products limit="'.$popular_limit.'" orderby="popularity" columns="'.$popular_cols.'"] ');?>
 				</div>
 			</div>
 		</section>
@@ -73,7 +79,7 @@ Template Name:Woocommerce Homepage Page
 			<div class="container">
 				<h2>New Arrivals</h2>
 				<div class="row">
-					<?php echo do_shortcode('[products limit="4" orderby="date" columns="4"] ');?>
+					<?php echo do_shortcode('[products limit="'.$new_arrival_limit.'" orderby="date" columns="'.$new_arrival_cols.'"] ');?>
 				</div>
 			</div>
 		</section>

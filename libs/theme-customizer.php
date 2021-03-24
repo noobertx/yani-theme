@@ -95,7 +95,7 @@ class _theme_name_Customize {
 		$wp_customize->add_section( 'sec_featured_products', 
         	array(
             'title'       => __( 'Products and Blog', '_theme_name' ), //Visible title of section
-            'priority'    => 35, //Determines what order this appears in
+            'priority'    => 10, //Determines what order this appears in
             'capability'  => 'edit_theme_options', //Capability needed to tweak
             'description' => __('Featured Products and Blog Settings.', '_theme_name'), //Descriptive tooltip
         	) 
