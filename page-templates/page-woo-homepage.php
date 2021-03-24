@@ -54,6 +54,7 @@ Template Name:Woocommerce Homepage Page
 						<?php
 						++$j ;
 					}
+					wp_reset_postdata();
 				}
 			?>
 		</div>
