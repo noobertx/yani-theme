@@ -11,7 +11,7 @@ class _theme_name_Customize {
          ) 
       );
       
-      $slider = [
+      $settings = [
 			[
 				'fields' => [
 					'set_slider_page1'=>[
@@ -89,9 +89,42 @@ class _theme_name_Customize {
 			],
 		];
 
-		_theme_name_Customize::render_setting($wp_customize,$slider,'sec_slider');     	
+		_theme_name_Customize::render_setting($wp_customize,$settings,'sec_slider');
+      	
 
-		
+		$wp_customize->add_section( 'sec_featured_products', 
+        	array(
+            'title'       => __( 'Products and Blog', '_theme_name' ), //Visible title of section
+            'priority'    => 35, //Determines what order this appears in
+            'capability'  => 'edit_theme_options', //Capability needed to tweak
+            'description' => __('Featured Products and Blog Settings.', '_theme_name'), //Descriptive tooltip
+        	) 
+      	);
+
+      	$settings = [
+			[
+				'fields' => [
+					'max_popular_num'=>[
+						'type' => 'number',
+						'label'	=> 'Popular Products Max Number',
+						'description'	=> 'Popular Products Max Number',
+						'default'=>'4',
+						'sanitize_callback'=>'absint',
+					],
+					'max_new_products_num'=>[
+						'type' => 'number',
+						'label'	=> 'New Arrival Products Max Number',
+						'description'	=> 'New Arrival Products Max Number',
+						'default'=>'4',
+						'sanitize_callback'=>'absint',
+					],
+				]
+			],
+		];
+
+		_theme_name_Customize::render_setting($wp_customize,$settings,'sec_featured_products');
+
+
    }
 
    public static function render_setting($wp_customize,$collection,$section){
