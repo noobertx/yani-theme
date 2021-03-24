@@ -58,8 +58,25 @@ Template Name:Woocommerce Homepage Page
 			?>
 		</div>
 	</section>	
+
 	<div class="page__content">
-		<?php //the_content();?>			
+		<section class="popular-products">
+			<div class="container">
+				<h2>Popular Products</h2>
+				<div class="row">
+					<?php echo do_shortcode('[products limit="4" orderby="popularity" columns="4"] ');?>
+				</div>
+			</div>
+		</section>
+
+		<section class="new-arrivals">
+			<div class="container">
+				<h2>New Arrivals</h2>
+				<div class="row">
+					<?php echo do_shortcode('[products limit="4" orderby="date" columns="4"] ');?>
+				</div>
+			</div>
+		</section>
 	</div>
 </main>
 
