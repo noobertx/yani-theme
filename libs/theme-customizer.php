@@ -4,10 +4,10 @@ class _theme_name_Customize {
       //1. Define a new section (if desired) to the Theme Customizer
       $wp_customize->add_section( 'sec_slider', 
          array(
-            'title'       => __( 'Slider Options', 'mytheme' ), //Visible title of section
+            'title'       => __( 'Slider Options', '_theme_name' ), //Visible title of section
             'priority'    => 35, //Determines what order this appears in
             'capability'  => 'edit_theme_options', //Capability needed to tweak
-            'description' => __('Allows you to customize some example settings for MyTheme.', 'mytheme'), //Descriptive tooltip
+            'description' => __('Allows you to customize some example settings for MyTheme.', '_theme_name'), //Descriptive tooltip
          ) 
       );
       
@@ -89,9 +89,14 @@ class _theme_name_Customize {
 			],
 		];
 
+		_theme_name_Customize::render_setting($wp_customize,$slider,'sec_slider');     	
 
-      	foreach($slider as $slide){
-			foreach($slide['fields'] as $name=>$field){
+		
+   }
+
+   public static function render_setting($wp_customize,$collection,$section){
+   	foreach($collection as $item){
+			foreach($item['fields'] as $name=>$field){
 				$wp_customize->add_setting(
 					$name,array(
 						'type'	=> 'theme_mod',
@@ -104,14 +109,13 @@ class _theme_name_Customize {
 					$name,array(
 						'label'	=> $field['label'],
 						'description'	=> $field['description'],
-						'section'	=> 'sec_slider',
+						'section'	=> $section,
 						'type'	=> $field['type'],
 					)
 				);
 			}
 		}
    }
-
    /**
     * This will output the custom WordPress settings to the live theme's WP head.
     * 
