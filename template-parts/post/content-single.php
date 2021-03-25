@@ -54,7 +54,7 @@
 		$next = get_next_post();
 	?>
 	<?php if($prev || $next) { ?>
-	<nav role="navigation">
+	<nav role="navigation" class="post__navigation">
 		<!-- <h2><?php esc_attr_e('Post Navigation','_themename')?></h2> -->
 		<div class="post-navigation__links">
 			<?php if($prev) { ?>
