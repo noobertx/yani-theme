@@ -21,6 +21,7 @@
 		Read More
 		<span class="u-screen-reader-text">About <?php the_title()?></span>
 	</a>
+	<div class="author">		
 	<div class="author-avatar">
 		<?php echo get_avatar($author_id,265); ?>
 	</div>
@@ -45,7 +46,7 @@
 				<?php echo $author_description; ?>
 		</div>
 	</div>
-
+	</div>
 
 
 	<?php
