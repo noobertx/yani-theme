@@ -31,7 +31,7 @@ function _theme_name_callback($comment,$args,$depth){
 			<?php comment_reply_link(array_merge($args,array(
 				'depth'=> $depth,
 				'max_depth'=> $args['max_depth'],
-				'reply_text'=> "Hello",
+				'reply_text'=> "Reply",
 				'add_bellow'=> 'div-comment',
 				'before'=> '<div class="comment__reply-link">',
 				'after'=> '</div>',

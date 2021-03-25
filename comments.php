@@ -32,6 +32,7 @@
 			'avatar_size'=>50,
 			'reply_text' => 'Reply',
 			'callback' => '_theme_name_callback'
+			
 		));
 
 		?>
