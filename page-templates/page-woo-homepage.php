@@ -62,12 +62,19 @@ Template Name:Woocommerce Homepage Page
 
 	<div class="page__content">
 		<?php
+
 			$popular_limit 		= get_theme_mod('max_popular_num',4);
 			$popular_cols 		= get_theme_mod('max_popular_cols',4);
-			$popular_cols  = ($popular_cols <= 0) ? $popular_cols : 1;
+			$popular_cols  = (intval($popular_cols) <= 0) ? $popular_cols : 4;
 			$new_arrival_limit 		= get_theme_mod('max_new_products_num',4);
 			$new_arrival_cols 		= get_theme_mod('max_new_products_cols',4);
-			$new_arrival_cols  = ($new_arrival_cols <= 0) ? $new_arrival_cols : 1;
+			$new_arrival_cols  = (intval($new_arrival_cols) <= 0) ? $new_arrival_cols : 4;
+			$deal_of_the_week 		= get_theme_mod('deal_of_the_week',0);
+
+			$currency = get_woocommerce_currency_symbol();
+			if($deal_of_the_week != 0) {		
+				$deal_product = wc_get_product( $deal_of_the_week );	
+			}
 		?>
 
 		<?php if($popular_limit!=0): ?>
@@ -91,7 +98,25 @@ Template Name:Woocommerce Homepage Page
 			</div>
 		</section>
 		<?php endif;?>
+		<?php if($deal_of_the_week!=0): ?>
+		<section class="deal-of-the-week">
+			<div class="container">
+				<h2>Deal of the Week</h2>
+				<?php
+			
 
+				?>
+				<div class="row d-flex align-items-center">
+					<div class="deal-img ml-auto col-md-6 col-12 text-center">
+						<?php echo get_the_post_thumbnail($deal_of_the_week,"large",["class"=>"img-fluid"]);?>
+					</div>
+					<div class="deal-desc mr-auto  col-md-6 col-12 text-center">
+						
+					</div>
+				</div>
+			</div>
+		</section>
+		<?php endif;?>
 		<?php the_content();?>
 	</div>
 </main>

@@ -132,6 +132,13 @@ class _theme_name_Customize {
 						'default'=>'4',
 						'sanitize_callback'=>'absint',
 					],
+					'deal_of_the_week'=>[
+						'type' => 'number',
+						'label'	=> 'Deal of the Week Product ID',
+						'description'	=> 'Product ID',
+						'default'=>'',
+						'sanitize_callback'=>'absint',
+					],
 				]
 			],
 		];
