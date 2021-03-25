@@ -62,7 +62,7 @@ Template Name:Woocommerce Homepage Page
 
 	<div class="page__content">
 		<?php
-
+		if(class_exists('woocommerce')): 
 			$popular_limit 		= get_theme_mod('max_popular_num',4);
 			$popular_cols 		= get_theme_mod('max_popular_cols',4);
 			$popular_cols  = (intval($popular_cols) <= 0) ? $popular_cols : 4;
@@ -140,6 +140,7 @@ Template Name:Woocommerce Homepage Page
 				</div>
 			</div>
 		</section>
+		<?php endif;?>
 		<?php endif;?>
 		<?php the_content();?>
 	</div>
