@@ -142,6 +142,34 @@ Template Name:Woocommerce Homepage Page
 		</section>
 		<?php endif;?>
 		<?php endif;?>
+		<section class="_theme_name-blogs">
+			<div class="container">
+				<h2><?php echo get_theme_mod('set_blog_title','News From Our Blog');?></h2>
+				<div class="row">
+					<?php
+						$args = [
+							'posts' => 2,
+							'posts_per_page'=>'2',
+							'orderby' => 'date',
+						];
+
+						$blogs = new WP_Query($args);
+						if($blogs->have_posts()):
+							while($blogs->have_posts()): $blogs->the_post(); ?>
+								<div class="col-md-4 col-12 text-center">
+									<?php echo get_the_post_thumbnail();?>
+									<h3><?php echo get_the_title();?></h3>
+									<p><?php echo wp_trim_words( get_the_excerpt(), 15	 ); ?></p>
+									<a href="<?php echo esc_url(get_the_permalink())?>" class="btn-sm bg-secondary light">Read More</a>
+								</div>
+							<?php
+							endwhile;
+							wp_reset_postdata();
+						endif;
+					?>
+				</div>
+			</div>
+		</section>
 		<?php the_content();?>
 	</div>
 </main>
