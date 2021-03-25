@@ -4,7 +4,7 @@
 	}
 
 ?>
-
+<section>	
 <div id="comments" class="comments">
 	<?php if(have_comments()){ ?>
 		<h2 class="comments_title">
@@ -25,20 +25,23 @@
 					esc_html_e('Comments are closed for this post','_themename');
 				?>
 			</p>	
-			<?php } ?>
+			<?php }else{
+
+			 ?>
 		<?php 
 		wp_list_comments(array(
 			'style' => 'li',
 			'avatar_size'=>50,
 			'reply_text' => 'Reply',
 			'callback' => '_theme_name_callback'
-			
-		));
 
+		));
+		}
 		?>
 		</ul>
 	<?php the_comments_pagination(); ?>
 	<?php comment_form(); ?>
 	<?php } ?>
 </div>
+</section>
 

@@ -48,7 +48,7 @@ body{}
 	ul#menu-menu-1 {
     margin: 0;
 	}
-
+	.comments,
 	article {
     	max-width: 1140px;
     	margin: auto;
