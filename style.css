@@ -44,6 +44,11 @@ body{}
     margin: 0;
 	}
 
+	article {
+    	max-width: 1140px;
+    	margin: auto;
+	}
+
 	.navigation-wrap {
 	    width: 88vw!important;
 	    margin: auto;

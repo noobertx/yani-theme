@@ -1,3 +1,5 @@
+<section>
+	
 <article >				
 
 	<div class="post__inner">
@@ -32,3 +34,4 @@
 	?>
 
 </article>
+</section>
