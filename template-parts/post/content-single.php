@@ -14,13 +14,9 @@
 		<a href="<?php the_permalink();?>" title="<?php the_title_attribute();?>"> <?php the_title(); ?></a>
 	</h2>
 	<div>
-		<?php the_excerpt();?>
+		<?php the_content();?>
 	</div>
 
-	<a href="<?php echo get_the_permalink()?>" title="<?php the_title_attribute()?>">
-		Read More
-		<span class="u-screen-reader-text">About <?php the_title()?></span>
-	</a>
 	<div class="author">		
 	<div class="author-avatar">
 		<?php echo get_avatar($author_id,265); ?>
@@ -55,7 +51,6 @@
 	?>
 	<?php if($prev || $next) { ?>
 	<nav role="navigation" class="post__navigation">
-		<!-- <h2><?php esc_attr_e('Post Navigation','_themename')?></h2> -->
 		<div class="post-navigation__links">
 			<?php if($prev) { ?>
 					<div class="post-navigation__post--prev">
