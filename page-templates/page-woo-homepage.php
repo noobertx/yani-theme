@@ -80,7 +80,7 @@ Template Name:Woocommerce Homepage Page
 		<?php if($popular_limit!=0): ?>
 		<section class="popular-products">
 			<div class="container">
-				<h2>Popular Products</h2>
+				<h2 class="text-center">Popular Products</h2>
 				<div class="row">
 					<?php echo do_shortcode('[products limit="'.$popular_limit.'" orderby="popularity" columns="'.$popular_cols.'"] ');?>
 				</div>
@@ -91,7 +91,7 @@ Template Name:Woocommerce Homepage Page
 		<?php if($new_arrival_limit!=0): ?>
 		<section class="new-arrivals">
 			<div class="container">
-				<h2>New Arrivals</h2>
+				<h2 class="text-center">New Arrivals</h2>
 				<div class="row">
 					<?php echo do_shortcode('[products limit="'.$new_arrival_limit.'" orderby="date" columns="'.$new_arrival_cols.'"] ');?>
 				</div>
@@ -101,7 +101,7 @@ Template Name:Woocommerce Homepage Page
 		<?php if($deal_of_the_week!=0): ?>
 		<section class="deal-of-the-week">
 			<div class="container">
-				<h2>Deal of the Week</h2>
+				<h2 class="text-center">Deal of the Week</h2>
 				<?php
 				$sale = $deal_product->get_sale_price();
 				$regular = $deal_product->get_regular_price();
@@ -144,7 +144,7 @@ Template Name:Woocommerce Homepage Page
 		<?php endif;?>
 		<section class="_theme_name-blogs">
 			<div class="container">
-				<h2><?php echo get_theme_mod('set_blog_title','News From Our Blog');?></h2>
+				<h2 class="text-center"><?php echo get_theme_mod('set_blog_title','News From Our Blog');?></h2>
 				<div class="row">
 					<?php
 						$args = [
