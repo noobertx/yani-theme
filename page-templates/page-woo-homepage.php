@@ -103,7 +103,12 @@ Template Name:Woocommerce Homepage Page
 			<div class="container">
 				<h2>Deal of the Week</h2>
 				<?php
-			
+				$sale = $deal_product->get_sale_price();
+				$regular = $deal_product->get_regular_price();
+				$sale = (!empty($sale)) ? $sale : 0;
+
+				$discount_percentage = absint(($sale / $regular)*100);
+				// echo "Sale".$sale. "<br>Regular ".$regular." Discount ".$discount_percentage;
 
 				?>
 				<div class="row d-flex align-items-center">
@@ -111,6 +116,25 @@ Template Name:Woocommerce Homepage Page
 						<?php echo get_the_post_thumbnail($deal_of_the_week,"large",["class"=>"img-fluid"]);?>
 					</div>
 					<div class="deal-desc mr-auto  col-md-6 col-12 text-center">
+						<?php if ($discount_percentage >= 0 ):?>
+							<span class="discount"><?php echo $discount_percentage;?> % OFF</span>
+						<?php endif; ?>
+						<h3>
+							<a href="<?php echo get_the_permalink($deal_of_the_week); ?>">
+								<?php echo get_the_title($deal_of_the_week); ?>									
+							</a>
+						</h3>
+						<p><?php echo get_the_excerpt($deal_of_the_week); ?></p>
+						<div class="prices">
+							<span class="regular">
+								<?php echo $currency.$regular; ?>
+							</span>
+							<?php if($sale):?>
+							<span class="sale">
+								<?php echo $currency.$sale; ?>								
+							</span>
+						<?php endif;?>
+						</div>
 						
 					</div>
 				</div>
