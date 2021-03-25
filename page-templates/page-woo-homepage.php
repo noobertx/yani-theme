@@ -157,10 +157,14 @@ Template Name:Woocommerce Homepage Page
 						if($blogs->have_posts()):
 							while($blogs->have_posts()): $blogs->the_post(); ?>
 								<div class="col-md-4 col-12 text-center">
-									<?php echo get_the_post_thumbnail();?>
-									<h3><?php echo get_the_title();?></h3>
-									<p><?php echo wp_trim_words( get_the_excerpt(), 15	 ); ?></p>
-									<a href="<?php echo esc_url(get_the_permalink())?>" class="btn-sm bg-secondary light">Read More</a>
+									<article>										
+										<?php if(has_post_thumbnail()) :
+											the_post_thumbnail('medium',['class'=>'img-fluid']);
+										endif;?>
+										<h3><?php echo get_the_title();?></h3>
+										<p><?php echo wp_trim_words( get_the_excerpt(), 15	 ); ?></p>
+										<a href="<?php echo esc_url(get_the_permalink())?>" class="btn-sm bg-secondary light">Read More</a>
+									</article>
 								</div>
 							<?php
 							endwhile;
