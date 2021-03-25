@@ -135,7 +135,7 @@ Template Name:Woocommerce Homepage Page
 							</span>
 						<?php endif;?>
 						</div>
-						
+						<a href="<?php echo esc_url('?add-to-cart='.$deal_of_the_week); ?>" class="add-to-cart btn bg-primary">Add To Cart</a>
 					</div>
 				</div>
 			</div>
