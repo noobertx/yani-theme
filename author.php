@@ -12,13 +12,17 @@
 <?php $sidebarClass = (is_active_sidebar('primary-sidebar')) ? "has-sidebar" : "" ?>
 <div id="page" class="<?php echo $sidebarClass;?>">
 <main>
-	<header>
+	<section class="author-banner">
+		
+	<header >
+			
 		<?php echo get_avatar($author,100); ?>
 		<h1><?php esc_html($author_display);?></h1>
 		<div class="author__info">
 			<?php printf(esc_html(_n('%s post', '%s posts',$author_posts,'_themename')),number_format_i18n($author_posts));	?>
+			|
 			<?php if($author_website) { ?>
-				<a href="<?php echo esc_url($author_website);?>" target="_blank"><?php echo $author_website;?></a>a			
+				<a href="<?php echo esc_url($author_website);?>" class="" target="_blank">Visit Website</a>			
 			<?php } ?>
 		</div>
 
@@ -26,6 +30,7 @@
 			<?php echo esc_html($author_description);?>
 		</p>
 	</header>	
+	</section>
 
 	<?php get_template_part('loop','author'); ?>
 </main>
