@@ -1,13 +1,13 @@
 <?php
-class _theme_name_Customize {
+class _themename_Customize {
    public static function register ( $wp_customize ) {
       //1. Define a new section (if desired) to the Theme Customizer
       $wp_customize->add_section( 'sec_slider', 
          array(
-            'title'       => __( 'Slider Options', '_theme_name' ), //Visible title of section
+            'title'       => __( 'Slider Options', '_themename' ), //Visible title of section
             'priority'    => 35, //Determines what order this appears in
             'capability'  => 'edit_theme_options', //Capability needed to tweak
-            'description' => __('Allows you to customize some example settings for MyTheme.', '_theme_name'), //Descriptive tooltip
+            'description' => __('Allows you to customize some example settings for MyTheme.', '_themename'), //Descriptive tooltip
          ) 
       );
       
@@ -89,15 +89,15 @@ class _theme_name_Customize {
 			],
 		];
 
-		_theme_name_Customize::render_setting($wp_customize,$settings,'sec_slider');
+		_themename_Customize::render_setting($wp_customize,$settings,'sec_slider');
       	
 
 		$wp_customize->add_section( 'sec_featured_products', 
         	array(
-            'title'       => __( 'Products and Blog', '_theme_name' ), //Visible title of section
+            'title'       => __( 'Products and Blog', '_themename' ), //Visible title of section
             'priority'    => 10, //Determines what order this appears in
             'capability'  => 'edit_theme_options', //Capability needed to tweak
-            'description' => __('Featured Products and Blog Settings.', '_theme_name'), //Descriptive tooltip
+            'description' => __('Featured Products and Blog Settings.', '_themename'), //Descriptive tooltip
         	) 
       	);
 
@@ -143,7 +143,7 @@ class _theme_name_Customize {
 			],
 		];
 
-		_theme_name_Customize::render_setting($wp_customize,$settings,'sec_featured_products');
+		_themename_Customize::render_setting($wp_customize,$settings,'sec_featured_products');
 
 
    }
@@ -243,10 +243,10 @@ class _theme_name_Customize {
 }
 
 // Setup the Theme Customizer settings and controls...
-add_action( 'customize_register' , array( '_theme_name_Customize' , 'register' ) );
+add_action( 'customize_register' , array( '_themename_Customize' , 'register' ) );
 
 // Output custom CSS to live site
-// add_action( 'wp_head' , array( '_theme_name_Customize' , 'header_output' ) );
+// add_action( 'wp_head' , array( '_themename_Customize' , 'header_output' ) );
 
 // // Enqueue live preview javascript in Theme Customizer admin screen
-// add_action( 'customize_preview_init' , array( '_theme_name_Customize' , 'live_preview' ) );
+// add_action( 'customize_preview_init' , array( '_themename_Customize' , 'live_preview' ) );

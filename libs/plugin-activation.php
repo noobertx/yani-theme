@@ -1,6 +1,6 @@
 <?php
 require_once("class-tgm-activation.php");
-class Yani_Plugins {
+class _themename_Plugins {
 	function __construct(){
 		add_action( 'tgmpa_register', [ $this, 'install_recommended_plugin' ] );  
 	}
@@ -8,29 +8,29 @@ class Yani_Plugins {
 	public function install_recommended_plugin(){
 		$plugins = array(
             array(
-            	'name'      => __('Redux Framework', '__theme_name'),
+            	'name'      => __('Redux Framework', '_themename'),
             	'slug'      => 'redux-framework',
             	'required'  => true,
         	),
         	array(
-            	'name'      => __('Custom Post Type', '__theme_name'),
+            	'name'      => __('Custom Post Type', '_themename'),
             	'slug'      => 'custom-post-type-ui',
             	'required'  => false,
         	),
         	array(
-            	'name'      => __('Recent Post Widget Extended', '__theme_name'),
+            	'name'      => __('Recent Post Widget Extended', '_themename'),
             	'slug'      => 'recent-posts-widget-extended',
             	'required'  => false,
         	),
         	array(
-            	'name'      => __('WooCommerce', '__theme_name'),
+            	'name'      => __('WooCommerce', '_themename'),
             	'slug'      => 'woocommerce',
             	'required'  => false,
         	)
         );
         
         $config = array(
-        	'id'           => '__theme_name',            // Unique ID for hashing notices for multiple instances of TGMPA.
+        	'id'           => '_themename',            // Unique ID for hashing notices for multiple instances of TGMPA.
         	'default_path' => get_template_directory() . "/auxin-content/embeds/plugins/",                      // Default absolute path to bundled plugins.
         	'menu'         => 'tgmpa-install-plugins', // Menu slug.
         	'has_notices'  => false,                   // Show admin notices or not.
@@ -40,8 +40,8 @@ class Yani_Plugins {
         	'message'      => '',                      // Message to output right before the plugins table.
 	
         	'strings'      => array(
-        	    'page_title'                      => __( 'Install Recommended Plugins', '__theme_name' ),
-        	    'menu_title'                      => __( 'Install Plugins', '__theme_name' )
+        	    'page_title'                      => __( 'Install Recommended Plugins', '_themename' ),
+        	    'menu_title'                      => __( 'Install Plugins', '_themename' )
         	)
     	);
 
@@ -49,6 +49,6 @@ class Yani_Plugins {
 		tgmpa( $plugins, $config );
 	}
 }; 
-new Yani_Plugins();
+new _themename_Plugins();
 
 ?>

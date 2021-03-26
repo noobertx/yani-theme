@@ -32,8 +32,8 @@
 		wp_list_comments(array(
 			'style' => 'li',
 			'avatar_size'=>50,
-			'reply_text' => 'Reply',
-			'callback' => '_theme_name_callback'
+			'reply_text' => __('Reply','_themename'),
+			'callback' => '_themename_callback'
 
 		));
 		}

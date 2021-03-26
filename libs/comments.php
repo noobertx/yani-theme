@@ -1,5 +1,5 @@
 <?php 
-function _theme_name_callback($comment,$args,$depth){
+function _themename_callback($comment,$args,$depth){
 	$tag = ($args['style'] == "div") ? "div" : "li";
 	?>
 	<<?php echo $tag;?> <?php comment_class('comment-item',$comment->comment_parent ? 'comment--child' : 't');?>>

@@ -1,5 +1,5 @@
 <?php
-class Yani_LazyLoad {
+class _themename_LazyLoad {
 	function __construct(){
 		add_action( 'wp', [ $this, 'action_lazyload_images' ] );
 		add_action( 'customize_register', [ $this, 'action_customize_register_lazyload' ] );
@@ -79,14 +79,14 @@ class Yani_LazyLoad {
 
 	public function action_enqueue_lazyload_assets() {
 		wp_enqueue_script(
-			'yani-lazy-load-images',
+			'_themename-lazy-load-images',
 			get_theme_file_uri( '/assets/js/lazyload.min.js' ),
 			[],
 			microtime(),
 			false
 		);
-		wp_script_add_data( 'yani-lazy-load-images', 'defer', true );
-		wp_script_add_data( 'yani-lazy-load-images', 'precache', true );
+		wp_script_add_data( '_themename-lazy-load-images', 'defer', true );
+		wp_script_add_data( '_themename-lazy-load-images', 'precache', true );
 	}
 	public function filter_add_lazyload_placeholders( string $content ) : string {
 		// Don't lazyload for feeds, previews.
@@ -209,5 +209,5 @@ class Yani_LazyLoad {
 
 }
 
-// new Yani_LazyLoad(); // Temportary disabled because of plugin conflict
+// new _themename_LazyLoad(); // Temportary disabled because of plugin conflict
 ?>

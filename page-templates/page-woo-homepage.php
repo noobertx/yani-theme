@@ -142,7 +142,7 @@ Template Name:Woocommerce Homepage Page
 		</section>
 		<?php endif;?>
 		<?php endif;?>
-		<section class="_theme_name-blogs">
+		<section class="_themename-blogs">
 			<div class="container">
 				<h2 class="text-center"><?php echo get_theme_mod('set_blog_title','News From Our Blog');?></h2>
 				<div class="row">

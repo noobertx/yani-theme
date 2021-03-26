@@ -107,7 +107,7 @@
 						<span class="items"></span>
 					</a>
 					
-					<div class="dropdown _theme_name-account">
+					<div class="dropdown _themename-account">
 						<a href = "#" class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton">
 							<i class="far fa-user"></i>
 						</a>

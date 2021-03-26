@@ -46,9 +46,9 @@ function postSearchResults($data){
       return $result;
 }
 
-add_action('rest_api_init', 'yaniCheckZipCodeREST');
+add_action('rest_api_init', '_themename_CheckZipCodeREST');
 
-function yaniCheckZipCodeREST(){
+function _themename_CheckZipCodeREST(){
   register_rest_route('search/v1', 'zip', array(
     'methods' => \WP_REST_SERVER::READABLE,
     'callback' => 'zipSearchResults'

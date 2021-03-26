@@ -1,6 +1,6 @@
 <?php
-	add_shortcode("yani_gallery","yani_gallery_callback");
-	function yani_gallery_callback($atts=[],$content = null,$tag = ""){
+	add_shortcode("_themename_gallery","_themename_gallery_callback");
+	function _themename_gallery_callback($atts=[],$content = null,$tag = ""){
 
 		extract(shortcode_atts([
 			"id" => ""
@@ -11,15 +11,15 @@
 		return "Shortcodes should be included in a plugin not within the theme";
 	}
 
-	function yani_gallery_atts_func(){
+	function _themename_gallery_atts_func(){
 		return [
 			"id" => ""
 		];
 	}
-	add_filter("shortcode_atts__yani_gallery","yani_gallery_atts_func");
+	add_filter("shortcode_atts___themename_gallery","_themename_gallery_atts_func");
 
-	add_shortcode("yani_delivery_zip","yani_delivery_zip_callback");
-	function yani_delivery_zip_callback($atts=[],$content = null,$tag = ""){
+	add_shortcode("_themename_delivery_zip","_themename_delivery_zip_callback");
+	function _themename_delivery_zip_callback($atts=[],$content = null,$tag = ""){
 		extract(shortcode_atts([
 			"id" => "",
 			"title" => "Check Our Delivery Areas",
@@ -29,7 +29,7 @@
 		],$atts,$tag));
 
 		ob_start(); ?>
-		<div class="yani-delivery-areas text-center">			
+		<div class="_themename-delivery-areas text-center">			
 			<h2><?php echo $title;?></h2>
 			<div class="delivery-area-status"></div>
 			<div action="#" method="POST" id="frm-check-service-area">
@@ -39,14 +39,14 @@
 		</div>
 			
 		<?php
-		yani_delivery_banner_cta($link,$button_text);
+		_themename_delivery_banner_cta($link,$button_text);
 		$output_string =  ob_get_contents();
 		ob_end_clean();
 		return $output_string;
 	}
 
-	function yani_delivery_banner_cta($link,$button_text){ ?>
-		<div class="yani-delivery-areas-banner text-center">		
+	function _themename_delivery_banner_cta($link,$button_text){ ?>
+		<div class="_themename-delivery-areas-banner text-center">		
 			<h2>Customizable Produce & Grocery Boxes</h2>
 			<h3 class="secondary">FOR TUESDAY DELIVERY</h3>
 			<a href="#" id="btn-change-location">Change Location &raquo;</a>
