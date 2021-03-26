@@ -52,6 +52,7 @@ body{}
 	}
 	.comments,
 	.author-banner header,
+	.search-header,
 	article {
     	max-width: 1140px;
     	margin: auto;
