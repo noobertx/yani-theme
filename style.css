@@ -94,6 +94,10 @@ body{}
     	justify-content: space-between;
 	}
 
+	.nav-links{
+		display: flex;
+		justify-content: center;
+	}
 }
 
 
@@ -136,4 +140,21 @@ section.main-slider .slick-prev{
 section.main-slider .slick-prev:before, 
 section.main-slider .slick-next:before{
 	font-size: 30px;
+}
+
+.pagination-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 30px auto;
+}
+
+.pagination .nav-links > * {
+    padding: 10px 20px;
+    text-align: center;
+    margin: 0 5;
+}
+
+a.page-numbers {
+    background: var(--color-theme-primary);
+    color: var(--color-theme-light);
 }
