@@ -1,6 +1,11 @@
 <?php
 require_once("utils/lazy-load.php");
 	function _themename_theme_support(){
+
+		$text_domain = "_theme_name";
+		load_theme_textdomain($textdomain,get_stylesheet_directory().'/languages/');
+		load_theme_textdomain($textdomain,get_template_directory().'/languages/');
+
 		add_theme_support('title-tag');
 		add_theme_support('post-thumbnails');
 		add_theme_support('html5',array(
