@@ -15,10 +15,11 @@
 	<section class="author-banner">
 		
 	<header >
-			
+		<?php ?>
 		<?php echo get_avatar($author,100); ?>
-		<h1><?php esc_html($author_display);?></h1>
+
 		<div class="author__info">
+		<h1 class="light"><?php echo (esc_html($author_display)) ? esc_html($author_display) :  the_archive_title(); ;?></h1>
 			<?php printf(esc_html(_n('%s post', '%s posts',$author_posts,'_themename')),number_format_i18n($author_posts));	?>
 			|
 			<?php if($author_website) { ?>
