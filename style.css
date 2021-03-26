@@ -54,6 +54,7 @@ body{}
 	.author-banner header,
 	.search-header,
 	.search-result-none,
+	.page-banner header,
 	article {
     	max-width: 1140px;
     	margin: auto;
@@ -97,7 +98,7 @@ body{}
 	.author-avatar__content {
 	    width: 100%;
 	}
-
+	.archive .has-sidebar main,
 	.author .has-sidebar main {
     	width: 100%;
 	}
@@ -118,26 +119,24 @@ body{}
 	}
 
 
-.author-banner {
+.page-banner {
     height: 50vh;
     display: flex;
     background:var(--color-theme-secondary);
 
 }
 
-.author-banner header{
+.page-banner header{
     display: flex;
     align-items:center;
 
 	}
 
-	.author-banner header>img {
+	.page-banner header>img {
     margin-right: 30px;
 }
 
-.author-banner header {
-    width: 100%;
-}
+
 }
 
 
