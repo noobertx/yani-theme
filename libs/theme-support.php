@@ -2,7 +2,7 @@
 require_once("utils/lazy-load.php");
 	function _themename_theme_support(){
 
-		$text_domain = "_theme_name";
+		$text_domain = "_themename";
 		load_theme_textdomain($textdomain,get_stylesheet_directory().'/languages/');
 		load_theme_textdomain($textdomain,get_template_directory().'/languages/');
 
