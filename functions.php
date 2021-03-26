@@ -13,6 +13,7 @@
 require_once("libs/theme-customizer.php");
 
 require_once("libs/class-wp-bootstrap-navwalker.php");
+require_once("libs/widgets.php");
 
 
 // if(class_exists('WooCommerce')){11
