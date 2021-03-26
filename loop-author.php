@@ -1,4 +1,4 @@
-<section class="author-content-wrapper">
+<section class="page-content-wrapper">
 	
 <?php
 global $custom_wprig_opt;
@@ -11,7 +11,7 @@ global $custom_wprig_opt;
 
 
 <?php if(have_posts()){ ?>
-	<section class="author-posts">			
+	<section class="page-post-items">			
 		<?php while(have_posts()){ ?>
 			<?php the_post(); ?>
 				<?php get_template_part('template-parts/post/content',get_post_format()); ?>

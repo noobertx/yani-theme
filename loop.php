@@ -1,4 +1,4 @@
-<section>	
+<section class="page-content-wrapper">	
 	<?php
 global $custom_wprig_opt;
 		if($custom_wprig_opt['opt-page-layout']=="left-sidebar"):
@@ -9,13 +9,16 @@ global $custom_wprig_opt;
 	?>
 
 <?php if(have_posts()){ ?>
+	<section class="page-post-items">	
 	<?php while(have_posts()){ ?>
 		<?php the_post(); ?>
 		<?php get_template_part('template-parts/post/content',get_post_format()); ?>
 	<?php }?>
-<section>	
-	<?php the_posts_pagination(); ?>
+		<div class="pagination-wrap">	
+			<?php the_posts_pagination(); ?>
+		</div>
 </section>
+
 <?php
 		if($custom_wprig_opt['opt-page-layout']=="right-sidebar"):
 			if(is_active_sidebar('primary-sidebar')) : 
