@@ -12,7 +12,9 @@ Tags: translation-ready, simple
 
 */
 body{}
-
+.screen-reader-text{
+	display:none;
+}
 .size-auto,
 .size-full,
 .size-large,
