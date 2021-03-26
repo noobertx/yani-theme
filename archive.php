@@ -4,8 +4,8 @@
 <main>	
 	<section class="page-banner">		
 		<header>
-			<?php the_archive_title('<h1 class="light article-title">','</h1>');?>
-			<?php the_archive_description('<p>','</p>');?>
+			<?php _e(the_archive_title('<h1 class="light article-title">','</h1>'),'_themename');?>
+			<?php _e(the_archive_description('<p>','</p>'),'_themename');?>
 		</header>
 	</section>
 	<?php get_template_part('loop'); ?>

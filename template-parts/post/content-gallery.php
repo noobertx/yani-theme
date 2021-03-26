@@ -15,8 +15,6 @@
 						$gallery = get_post_gallery(get_the_ID(),false);
 						$gallery = explode(",",$gallery['ids']);
 
-						print_r($gallery );
-
 						foreach($gallery as $id){
 							echo wp_get_attachment_image($id,'large');
 						}

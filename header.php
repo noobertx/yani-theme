@@ -41,7 +41,7 @@
     data-bs-target="#bs-example-navbar-collapse-1" 
     aria-controls="bs-example-navbar-collapse-1" 
     aria-expanded="false" 
-    aria-label="Toggle navigation">
+    aria-label="<?php __('Toggle navigation','_themename'); ?>">
       <span class="navbar-toggler-icon"></span>
     </button>
     <?php
@@ -88,7 +88,7 @@
 										?>
 								</nav> -->
 							</div>
-								<!-- <nav class="header-nav" role="navigation" aria-label="<?php esc_html__('Main Navigation','__theme_name')?>">
+								<!-- <nav class="header-nav" role="navigation" aria-label="<?php esc_html__('Main Navigation','_themename')?>">
 									<?php 
 									//	wp_nav_menu(array('theme_location'=>'main-menu'));
 									?>
@@ -102,7 +102,7 @@
 					</a>
 
 					<?php if(class_exists('woocommerce')) { ?>
-					<a class="cart-customlocation" href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
+					<a class="cart-customlocation" href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ,'_themename'); ?>">
 						<i class="far fa-shopping-cart"></i>
 						<span class="items"></span>
 					</a>
@@ -113,10 +113,10 @@
 						</a>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<?php if(is_user_logged_in()) { ?>
-							<a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>" >My Account</a>
-							<a href="<?php echo esc_url(wp_logout_url(get_permalink(get_option('woocommerce_myaccount_page_id')))); ?>" >Logout</a>
+							<a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>" ><?php _e('My Account','_themename'); ?></a>
+							<a href="<?php echo esc_url(wp_logout_url(get_permalink(get_option('woocommerce_myaccount_page_id')))); ?>" ><?php _e('Logout','_themename');?></a>
 							<?php }else{ ?>
-							<a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>" >Sign In</a>
+							<a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>" ><?php _e('Sign In','_themename'); ?></a>
 							<?php } ?>
 						</div>
 					</div>

@@ -22,8 +22,8 @@ require_once("libs/widgets.php");
 
 function _theme_readmore_link(){ ?> 
 <a href="<?php echo get_the_permalink()?>" title="<?php the_title_attribute()?>">
-		Read More
-		<span class="u-screen-reader-text">About <?php the_title()?></span>
+		<?php _e('Read More','_themename'); ?>
+		<span class="u-screen-reader-text"><?php _e('About'.the_title(),'_themename');?></span>
 </a>
 <?php }
 

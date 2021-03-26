@@ -60,7 +60,7 @@
 							<?php } ?>
 							<div class="post-navigation__content">
 								<div class="post-navigation__subtitle">
-									<?php echo esc_html('Prevous Post','_themename'); ?>									
+									<?php _e('Prevous Post','_themename'); ?>									
 								</div>
 								<span class="post-navigation__title">
 									<h2><?php echo esc_html(get_the_title($prev->ID)); ?></h2>
@@ -77,7 +77,7 @@
 							<?php } ?>
 							<div class="post-navigation__content">
 								<div class="post-navigation__subtitle">
-									<?php echo esc_html('Next Post','_themename'); ?>									
+									<?php _e('Next Post','_themename'); ?>									
 								</div>
 								<span class="post-navigation__title">
 									<h2><?php echo esc_html(get_the_title($next->ID)); ?></h2>

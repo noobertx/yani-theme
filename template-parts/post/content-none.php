@@ -3,7 +3,7 @@
 <?php get_search_form(); ?>
 
 <?php the_widget('WP_Widget_Recent_Posts',[
-	'title' => 'Take a look at out Lastest Post',
+	'title' => __('Take a look at out Lastest Post','_themename'),
 	'number' => 3
 ]); ?>
 </div>
