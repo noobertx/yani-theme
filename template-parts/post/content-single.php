@@ -17,7 +17,7 @@
 		<?php the_content();?>
 	</div>
 
-	<div class="author">		
+	<div class="author-card">		
 	<div class="author-avatar">
 		<?php echo get_avatar($author_id,265); ?>
 	</div>
