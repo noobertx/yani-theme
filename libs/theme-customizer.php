@@ -36,7 +36,57 @@ class _theme_name_Customize {
 						'sanitize_callback'=>'esc_url_raw',
 					],
 				]
-			]
+			],
+			[
+				'fields' => [
+					'set_slider_page2'=>[
+						'type' => 'dropdown-pages',
+						'label'	=> 'Set Slider Page 2',
+						'description'	=> 'Set Slider Page 2',
+						'default'=>'',
+						'sanitize_callback'=>'absint',
+					],
+					'set_slider_button_text2'=>[
+						'type' => 'text',
+						'label'	=> 'Button Text for Page 2',
+						'description'	=> 'Button Text for Page 2',
+						'default'=>'',
+						'sanitize_callback'=>'sanitize_text_field',
+					],
+					'set_slider_button_url2'=>[
+						'type' => 'url',
+						'label'	=> 'Button URL for Page 2',
+						'description'	=> 'Button URL for Page 2',
+						'default'=>'',
+						'sanitize_callback'=>'esc_url_raw',
+					],
+				]
+			],
+			[
+				'fields' => [
+					'set_slider_page3'=>[
+						'type' => 'dropdown-pages',
+						'label'	=> 'Set Slider Page 3',
+						'description'	=> 'Set Slider Page 3',
+						'default'=>'',
+						'sanitize_callback'=>'absint',
+					],
+					'set_slider_button_text3'=>[
+						'type' => 'text',
+						'label'	=> 'Button Text for Page 3',
+						'description'	=> 'Button Text for Page 3',
+						'default'=>'',
+						'sanitize_callback'=>'sanitize_text_field',
+					],
+					'set_slider_button_url1'=>[
+						'type' => 'url',
+						'label'	=> 'Button URL for Page 3',
+						'description'	=> 'Button URL for Page 3',
+						'default'=>'',
+						'sanitize_callback'=>'esc_url_raw',
+					],
+				]
+			],
 		];
 
 
