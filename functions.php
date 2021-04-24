@@ -16,9 +16,9 @@ require_once("libs/class-wp-bootstrap-navwalker.php");
 require_once("libs/widgets.php");
 
 
-// if(class_exists('WooCommerce')){11
+if(class_exists('woocommerce')){
 	require_once("libs/woocommerce.php"); 
-// }
+}
 
 function _theme_readmore_link(){ ?> 
 <a href="<?php echo get_the_permalink()?>" title="<?php the_title_attribute()?>">
