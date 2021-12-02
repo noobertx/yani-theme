@@ -3,12 +3,12 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-if ( ! class_exists( '_skymount_Form_Helper' ) ) {
-	class _skymount_Form_Helper{
+if ( ! class_exists( '_Yani_Form_Helper' ) ) {
+	class _Yani_Form_Helper{
 		private static $instance = null;	
 
 		public function get_required_field_symbol( $field ,$symbol=" *") {
-	        $required_fields = _skymount_theme()->get_option('required_fields');
+	        $required_fields = _yani_theme()->get_option('required_fields');
 	        
 	        if(array_key_exists($field, $required_fields)) {
 	            $field = $required_fields[$field];
@@ -28,6 +28,17 @@ if ( ! class_exists( '_skymount_Form_Helper' ) ) {
 	        return '';
 	    }
 
+
+	    public function get_form_type() {
+	        $form_type = _yani_theme()->get_option('form_type', 'custom_form');
+
+	        if($form_type == 'contact_form_7_gravity_form' || $form_type == 'contact_form_7' || $form_type == 'gravity_form' || $form_type == 'hubspot') {
+	            return true;
+	        }
+	        return false;
+	    }
+		
+
 	    public function is_multiselect($value = false) {
 	        if($value) {
 	            return true;
@@ -35,6 +46,82 @@ if ( ! class_exists( '_skymount_Form_Helper' ) ) {
 	        return false;
 	    }
 
+	    public function show_google_reCaptcha() {
+	        $enable_reCaptcha = _yani_theme()->get_option('enable_reCaptcha');
+	        $recaptha_site_key = _yani_theme()->get_option('recaptha_site_key');
+	        $recaptha_secret_key = _yani_theme()->get_option('recaptha_secret_key');
+
+	        if( $enable_reCaptcha != 0 && !empty($recaptha_site_key) && !empty($recaptha_secret_key) ) {
+	            return true;
+	        }
+	        return false;
+
+	    }
+	    public function render_hirarchical_options($taxonomy_name, $taxonomy_terms, $searched_term, $prefix = " " ){
+
+	        if (!empty($taxonomy_terms) && taxonomy_exists($taxonomy_name)) {
+	            foreach ($taxonomy_terms as $term) {
+
+	                if( $taxonomy_name == 'property_area' ) {
+	                    $term_meta= get_option( "_yani_property_area_$term->term_id");
+	                    $parent_city = sanitize_title($term_meta['parent_city']);
+
+	                    if ($searched_term == $term->slug) {
+	                        echo '<option data-ref="' . urldecode($term->slug) . '" data-belong="'.urldecode($parent_city).'" value="' . urldecode($term->slug) . '" selected="selected">' . esc_attr($prefix) . esc_attr($term->name) . '</option>';
+	                    } else {
+	                        echo '<option data-ref="' . urldecode($term->slug) . '" data-belong="'.urldecode($parent_city).'" value="' . urldecode($term->slug) . '">' . esc_attr($prefix) . esc_attr($term->name) .'</option>';
+	                    }
+	                    
+	                } elseif( $taxonomy_name == 'property_city' ) {
+	                    $term_meta= get_option( "_yani_property_city_$term->term_id");
+	                    $parent_state = sanitize_title($term_meta['parent_state']);
+
+	                    if ($searched_term == $term->slug) {
+	                        echo '<option data-ref="' . urldecode($term->slug) . '" data-belong="'.urldecode($parent_state).'" value="' . urldecode($term->slug) . '" selected="selected">' . esc_attr($prefix) . esc_attr($term->name) . '</option>';
+	                    } else {
+	                        echo '<option data-ref="' . urldecode($term->slug) . '" data-belong="'.urldecode($parent_state).'" value="' . urldecode($term->slug) . '">' . esc_attr($prefix) . esc_attr($term->name) .'</option>';
+	                    }
+
+	                } elseif( $taxonomy_name == 'property_state' ) {
+
+	                    $term_meta = get_option( "_yani_property_state_$term->term_id");
+	                    $parent_country = sanitize_title($term_meta['parent_country']);
+
+	                    if ($searched_term == $term->slug) {
+	                        echo '<option data-ref="' . urldecode($term->slug) . '" data-belong="'.urldecode($parent_country).'" value="' . urldecode($term->slug) . '" selected="selected">' . esc_attr($prefix) . esc_attr($term->name) . '</option>';
+	                    } else {
+	                        echo '<option data-ref="' . urldecode($term->slug) . '" data-belong="'.urldecode($parent_country).'" value="' . urldecode($term->slug) . '">' . esc_attr($prefix) . esc_attr($term->name) .'</option>';
+	                    }
+
+	                } elseif( $taxonomy_name == 'property_country' ) {
+	            
+	                    if ($searched_term == $term->slug) {
+	                        echo '<option data-ref="' . urldecode($term->slug) . '" value="' . urldecode($term->slug) . '" selected="selected">' . esc_attr($prefix) . esc_attr($term->name) . '</option>';
+	                    } else {
+	                        echo '<option data-ref="' . urldecode($term->slug) . '" value="' . urldecode($term->slug) . '">' . esc_attr($prefix) . esc_attr($term->name) .'</option>';
+	                    }
+
+	                } else {
+
+	                    if ($searched_term == $term->slug) {
+	                        echo '<option value="' . urldecode($term->slug) . '" selected="selected">' . esc_attr($prefix) . esc_attr($term->name) . '</option>';
+	                    } else {
+	                        echo '<option value="' . urldecode($term->slug) . '">' . esc_attr($prefix) . esc_attr($term->name) . '</option>';
+	                    }
+	                }
+
+
+	                $child_terms = get_terms($taxonomy_name, array(
+	                    'hide_empty' => false,
+	                    'parent' => $term->term_id
+	                ));
+
+	                if (!empty($child_terms)) {
+	                    $this->render_hirarchical_options( $taxonomy_name, $child_terms, $searched_term, "- ".$prefix );
+	                }
+	            }
+	        }
+	    }
 	    public function get_taxonomies_for_edit_listing_multivalue( $listing_id, $taxonomy ){
 
 	        $taxonomy_terms_ids= array();
@@ -118,6 +205,6 @@ if ( ! class_exists( '_skymount_Form_Helper' ) ) {
 	}
 }
 
-function _skymount_form() {
-	return _skymount_Form_Helper::get_instance();
+function _yani_form() {
+	return _Yani_Form_Helper::get_instance();
 }

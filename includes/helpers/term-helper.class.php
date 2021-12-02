@@ -3,8 +3,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-if ( ! class_exists( '_skymount_Term_Helper' ) ) {
-	class _skymount_Term_Helper{
+if ( ! class_exists( '_Yani_Term_Helper' ) ) {
+	class _Yani_Term_Helper{
 		private static $instance = null;		
 		public static function get_instance() {
 
@@ -41,13 +41,13 @@ if ( ! class_exists( '_skymount_Term_Helper' ) ) {
 	            foreach ( $tax_terms as $term ) {
 	                if ( $term->parent == $parent_id ) {
 	                    $terms_array[ $term->slug ] = $prefix . $term->name;
-	                    skymount_add_term_children( $term->term_id, $tax_terms, $terms_array, $prefix . '- ' );
+	                    yani_add_term_children( $term->term_id, $tax_terms, $terms_array, $prefix . '- ' );
 	                }
 	            }
 	        }
 	    }
 
-		    public function skymount_get_term_id_by_slug($slug, $taxonomy) {
+		public function get_id_by_slug($slug, $taxonomy) { //function yani_get_term_id_by_slug
 	        if( !taxonomy_exists($taxonomy) && empty($slug)) {
 	            return '';
 	        }
@@ -107,7 +107,7 @@ if ( ! class_exists( '_skymount_Term_Helper' ) ) {
 	}
 }
 
-function _skymount_terms() {
-	return _skymount_Term_Helper::get_instance();
+function _yani_terms() {
+	return _Yani_Term_Helper::get_instance();
 }
 

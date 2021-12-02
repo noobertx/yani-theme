@@ -3,8 +3,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-if ( ! class_exists( '_skymount_Template_Helper' ) ) {
-	class _skymount_Template_Helper{
+if ( ! class_exists( '_Yani_Template_Helper' ) ) {
+	class _Yani_Template_Helper{
 		private static $instance = null;
 
 		public function get_template_link($template) {
@@ -44,59 +44,102 @@ if ( ! class_exists( '_skymount_Template_Helper' ) ) {
 	        return false;
     	}
 
+    	public function is_dashboard() {
+
+	        $files = apply_filters( 'yani_is_dashboard_filter', array(
+	            'template/user_dashboard_profile.php',
+	            'template/user_dashboard_insight.php',
+	            'template/user_dashboard_crm.php',
+	            'template/user_dashboard_properties.php',
+	            'template/user_dashboard_favorites.php',
+	            'template/user_dashboard_invoices.php',
+	            'template/user_dashboard_saved_search.php',
+	            'template/user_dashboard_floor_plans.php',
+	            'template/user_dashboard_multi_units.php',
+	            'template/user_dashboard_membership.php',
+	            'template/user_dashboard_gdpr.php',
+	            'template/user_dashboard_submit.php',
+	            'template/user_dashboard_messages.php'
+	            
+	        ) );
+
+	        if ( is_page_template($files) ) {
+	            return true;
+	        }
+	        return false;
+	    }
+
+	    public function is_transparent_logo() {
+	        $css_class = '';
+	        $header_type = _yani_theme()->get_option('header_style');
+	        $transparent = get_post_meta(get_the_ID(), 'yani_main_menu_trans', true);
+
+	        if( $transparent != 'no' && !empty($transparent) && ($header_type == '4') ) {
+	            return true;
+	        }
+
+	        if($this->is_splash()) {
+	            return true;
+	        }
+	        return false;
+	    }
+	   
+
     	public function is_listings_template() {
 
-        $files = apply_filters( 'skymount_is_listings_template_filter', array(
-            'template/property-listings-map.php',
-            'template/template-listing-list-v1.php',
-            'template/template-listing-list-v2.php',
-            'template/template-listing-list-v5.php',
-            'template/template-listing-list-v1-fullwidth.php',
-            'template/template-listing-list-v2-fullwidth.php',
-            'template/template-listing-list-v5-fullwidth.php',
-            'template/template-listing-grid-v1.php',
-            'template/template-listing-grid-v1-fullwidth-2cols.php',
-            'template/template-listing-grid-v1-fullwidth-3cols.php',
-            'template/template-listing-grid-v1-fullwidth-4cols.php',
-            'template/template-listing-grid-v2.php',
-            'template/template-listing-grid-v2-fullwidth-2cols.php',
-            'template/template-listing-grid-v2-fullwidth-3cols.php',
-            'template/template-listing-grid-v2-fullwidth-4cols.php',
-            'template/template-listing-grid-v4.php',
-            'template/template-listing-grid-v5.php',
-            'template/template-listing-grid-v5-fullwidth-2cols.php',
-            'template/template-listing-grid-v5-fullwidth-3cols.php',
-            'template/template-listing-grid-v6.php',
-            'template/template-listing-grid-v6-fullwidth-2cols.php',
-            'template/template-listing-grid-v6-fullwidth-3cols.php',
-            'template/template-listing-grid-v3.php',
-            'template/template-listing-grid-v3-fullwidth-2cols.php',
-            'template/template-listing-grid-v3-fullwidth-3cols.php',
-        ) );
+	        $files = apply_filters( 'yani_is_listings_template_filter', array(
+	            'template/property-listings-map.php',
+	            'template/template-listing-list-v1.php',
+	            'template/template-listing-list-v2.php',
+	            'template/template-listing-list-v5.php',
+	            'template/template-listing-list-v1-fullwidth.php',
+	            'template/template-listing-list-v2-fullwidth.php',
+	            'template/template-listing-list-v5-fullwidth.php',
+	            'template/template-listing-grid-v1.php',
+	            'template/template-listing-grid-v1-fullwidth-2cols.php',
+	            'template/template-listing-grid-v1-fullwidth-3cols.php',
+	            'template/template-listing-grid-v1-fullwidth-4cols.php',
+	            'template/template-listing-grid-v2.php',
+	            'template/template-listing-grid-v2-fullwidth-2cols.php',
+	            'template/template-listing-grid-v2-fullwidth-3cols.php',
+	            'template/template-listing-grid-v2-fullwidth-4cols.php',
+	            'template/template-listing-grid-v4.php',
+	            'template/template-listing-grid-v5.php',
+	            'template/template-listing-grid-v5-fullwidth-2cols.php',
+	            'template/template-listing-grid-v5-fullwidth-3cols.php',
+	            'template/template-listing-grid-v6.php',
+	            'template/template-listing-grid-v6-fullwidth-2cols.php',
+	            'template/template-listing-grid-v6-fullwidth-3cols.php',
+	            'template/template-listing-grid-v3.php',
+	            'template/template-listing-grid-v3-fullwidth-2cols.php',
+	            'template/template-listing-grid-v3-fullwidth-3cols.php',
+	        ) );
 
-        if ( is_page_template( $files ) ) {
-            return true;
-        }
-        return false;
-    }
+	        if ( is_page_template( $files ) ) {
+	            return true;
+	        }
+	        return false;
+    	}
+
     	public  function get_transparent() {
-        $css_class = '';
-        $transparent = get_post_meta(get_the_ID(), 'fave_main_menu_trans', true);
-        $header_type = get_post_meta(get_the_ID(), 'fave_header_type', true);
-        $header_style = _skymount_theme()->get_option('header_style');
+	        $css_class = '';
+	        $transparent = get_post_meta(get_the_ID(), 'yani_main_menu_trans', true);
+	        $header_type = get_post_meta(get_the_ID(), 'yani_header_type', true);
+	        $header_style = _yani_theme()->get_option('header_style');
 
-        if( $transparent != 'no' && $header_type != 'none' && !empty($transparent) && !empty($header_type) && $header_style == '4' && !wp_is_mobile() ) {
-            $css_class = 'header-transparent-wrap';
-        }
+	        if( $transparent != 'no' && $header_type != 'none' && !empty($transparent) && !empty($header_type) && $header_style == '4' && !wp_is_mobile() ) {
+	            $css_class = 'header-transparent-wrap';
+	        }
 
-        if($this->is_splash()) {
-            $css_class = 'header-transparent-wrap';
-        }
-        return $css_class;
-    }
+	        if($this->is_splash()) {
+	            $css_class = 'header-transparent-wrap';
+	        }
+	        return $css_class;
+	    }
+
     	public function is_search_needed() {
 
-	        $files = apply_filters( 'skymount_search_needed_filter', array(
+	        $files = apply_filters( 'yani_search_needed_filter', array(
 	            'template/property-listings-map.php',
 	            'template/user_dashboard_profile.php',
 	            'template/user_dashboard_properties.php',
@@ -160,7 +203,7 @@ if ( ! class_exists( '_skymount_Template_Helper' ) ) {
 	    }
 
 	    public function is_half_map() {
-	        if( (is_page_template(array('template/template-search.php')) && _skymount_theme()->get_option('search_result_page') == 'half_map') || is_page_template(array('template/property-listings-map.php')) ) {
+	        if( (is_page_template(array('template/template-search.php')) && _yani_theme()->get_option('search_result_page') == 'half_map') || is_page_template(array('template/property-listings-map.php')) ) {
 	            return true;
 
 	        }
@@ -177,7 +220,7 @@ if ( ! class_exists( '_skymount_Template_Helper' ) ) {
 	        return false;
 	    }
 
-	     function is_postid_needed() {
+	    public function is_postid_needed() {
 		        if( is_search() ) {
 		            return false;
 		        } elseif( is_author() ) {
@@ -186,7 +229,7 @@ if ( ! class_exists( '_skymount_Template_Helper' ) ) {
 		            return false;
 		        }
 		        return true;
-		    }
+	    }
 
 		public function render_breadcrumbs($options = array()){
 
@@ -197,13 +240,13 @@ if ( ! class_exists( '_skymount_Template_Helper' ) ) {
 	            )
 	        );
 
-	        $text['home']     = esc_html__('Home', _skymount_theme()->get_text_domain()); // text for the 'Home' link
-	        $text['category'] = esc_html__('%s', _skymount_theme()->get_text_domain()); // text for a category page
-	        $text['tax']      = esc_html__('%s', _skymount_theme()->get_text_domain()); // text for a taxonomy page
-	        $text['search']   = esc_html__('Search Results for "%s" Query', _skymount_theme()->get_text_domain()); // text for a search results page
-	        $text['tag']      = esc_html__('%s', _skymount_theme()->get_text_domain()); // text for a tag page
-	        $text['author']   = esc_html__('%s', _skymount_theme()->get_text_domain()); // text for an author page
-	        $text['404']      = esc_html__('Error 404', _skymount_theme()->get_text_domain()); // text for the 404 page
+	        $text['home']     = esc_html__('Home', _yani_theme()->get_text_domain()); // text for the 'Home' link
+	        $text['category'] = esc_html__('%s', _yani_theme()->get_text_domain()); // text for a category page
+	        $text['tax']      = esc_html__('%s', _yani_theme()->get_text_domain()); // text for a taxonomy page
+	        $text['search']   = esc_html__('Search Results for "%s" Query', _yani_theme()->get_text_domain()); // text for a search results page
+	        $text['tag']      = esc_html__('%s', _yani_theme()->get_text_domain()); // text for a tag page
+	        $text['author']   = esc_html__('%s', _yani_theme()->get_text_domain()); // text for an author page
+	        $text['404']      = esc_html__('Error 404', _yani_theme()->get_text_domain()); // text for the 404 page
 
 	        $defaults = array(
 	            'show_current' => 1, // 1 - show current post/page title in breadcrumbs, 0 - don't show
@@ -364,7 +407,7 @@ if ( ! class_exists( '_skymount_Template_Helper' ) ) {
 	                }
 	                elseif( get_post_type() == 'property' ){
 
-	                    $single_prop_breadcrumb = _skymount_theme()->get_option('single_prop_breadcrumb', 'property_type');
+	                    $single_prop_breadcrumb = _yani_theme()->get_option('single_prop_breadcrumb', 'property_type');
 
 	                    if( $single_prop_breadcrumb == 'property_city_area') {
 	                         $terms = get_the_terms( get_the_ID(), 'property_city' );
@@ -504,7 +547,7 @@ if ( ! class_exists( '_skymount_Template_Helper' ) ) {
 	            if (get_query_var('paged')) {
 
 	                if (is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author()) {
-	                    echo ' (' . esc_html__('Page', _skymount_theme()->get_text_domain()) . ' ' . get_query_var('paged') . ')';
+	                    echo ' (' . esc_html__('Page', _yani_theme()->get_text_domain()) . ' ' . get_query_var('paged') . ')';
 	                }
 	            }
 
@@ -512,6 +555,16 @@ if ( ! class_exists( '_skymount_Template_Helper' ) ) {
 	        }
 
 	    } 
+
+	    public function is_transparent() {
+	        $transparent = get_post_meta(get_the_ID(), 'yani_main_menu_trans', true);
+
+	        if( $transparent != 'no' && !empty($transparent) ) {
+	            return true;
+	        }
+	        return false;
+	    }
+
 	    public function get_percent_up_down($old_number, $new_number) {
 
 	        if( $old_number != 0 ) {
@@ -529,14 +582,14 @@ if ( ! class_exists( '_skymount_Template_Helper' ) ) {
 	        } 
 	        
 	        $output = '<div class="views-percentage '.$class.'">
-	            <i class="skymount-icon '.$arrow.'"></i> '.round($percent, 1).'%
+	            <i class="yani-icon '.$arrow.'"></i> '.round($percent, 1).'%
 	        </div>';
 
 	        return $output;
 	    }
 
 	    public function banner_fullscreen() {
-	        $banner_height = get_post_meta(get_the_ID(), 'fave_header_full_screen', true);
+	        $banner_height = get_post_meta(get_the_ID(), 'yani_header_full_screen', true);
 	        if( $banner_height != 0 ) {
 	            echo 'top-banner-wrap-fullscreen';
 	        }
@@ -545,7 +598,7 @@ if ( ! class_exists( '_skymount_Template_Helper' ) ) {
 
 	    public function current_screen() {
 	        global $pagenow;
-	        $post_type = skymount_admin_post_type();
+	        $post_type = yani_admin_post_type();
 
 	        $get_action = isset($_GET['action']) ? $_GET['action'] : '';
 
@@ -562,7 +615,7 @@ if ( ! class_exists( '_skymount_Template_Helper' ) ) {
 	            'selected_sidebar' => 'default-sidebar',
 	        );
 
-	        $meta = get_post_meta( $post_id, '_skymount_sidebar_meta', true );
+	        $meta = get_post_meta( $post_id, '_yani_sidebar_meta', true );
 	        $meta = wp_parse_args( (array) $meta, $defaults );
 
 	        if ( $field ) {
@@ -577,11 +630,11 @@ if ( ! class_exists( '_skymount_Template_Helper' ) ) {
 
 	    public function render_half_map_layout() {
 	        $listing_view = '';
-	        if( (is_page_template(array('template/template-search.php')) && _skymount_theme()->get_option('search_result_page') == 'half_map')) {
-	            $listing_view = _skymount_theme()->get_option('search_result_posts_layout', 'list-view-v1');
+	        if( (is_page_template(array('template/template-search.php')) && _yani_theme()->get_option('search_result_page') == 'half_map')) {
+	            $listing_view = _yani_theme()->get_option('search_result_posts_layout', 'list-view-v1');
 
 	        } elseif(is_page_template(array('template/property-listings-map.php'))) {
-	            $listing_view = _skymount_theme()->get_option('halfmap_posts_layout', 'list-view-v1');
+	            $listing_view = _yani_theme()->get_option('halfmap_posts_layout', 'list-view-v1');
 
 	        }
 	        if($listing_view == 'list-view-v1' || $listing_view == 'list-view-v2' || $listing_view == 'list-view-v5') {
@@ -593,9 +646,26 @@ if ( ! class_exists( '_skymount_Template_Helper' ) ) {
 	        return $listing_view;
 	    }
 
+	    public function get_header_transparent_class() {
+	        $css_class = '';
+	        $transparent = get_post_meta(get_the_ID(), 'yani_main_menu_trans', true);
+	        $header_type = get_post_meta(get_the_ID(), 'yani_header_type', true);
+	        $header_style = _yani_theme()->get_option('header_style');
+
+	        if( $transparent != 'no' && $header_type != 'none' && !empty($transparent) && !empty($header_type) && $header_style == '4' && !wp_is_mobile() ) {
+	            $css_class = 'header-transparent-wrap';
+	        }
+
+	        if($this->is_splash()) {
+	            $css_class = 'header-transparent-wrap';
+	        }
+	        return $css_class;
+	    }
+
+
 
 	    public function is_container_needed() {
-	        $files = apply_filters( 'skymount_container_needed_filter', array(
+	        $files = apply_filters( 'yani_container_needed_filter', array(
 	            'template/property-listings-map.php',
 	            'template/user_dashboard_profile.php',
 	            'template/user_dashboard_properties.php',
@@ -622,7 +692,7 @@ if ( ! class_exists( '_skymount_Template_Helper' ) ) {
 
 	    public function is_landing_page() {
 
-	        $files = apply_filters( 'skymount_is_landing_page_filter', array(
+	        $files = apply_filters( 'yani_is_landing_page_filter', array(
 	            'template/property-listings-map.php',
 	            'template/user_dashboard_profile.php',
 	            'template/user_dashboard_properties.php',
@@ -647,7 +717,7 @@ if ( ! class_exists( '_skymount_Template_Helper' ) ) {
 	        global $post;
 	        
 	        $post_id = isset($post->ID) ? $post->ID : 0;
-	        $header_type = get_post_meta($post_id, 'fave_header_type', true);
+	        $header_type = get_post_meta($post_id, 'yani_header_type', true);
 	        
 	        if(is_page_template('template/user_dashboard_submit.php')) {
 	            return true;
@@ -658,7 +728,7 @@ if ( ! class_exists( '_skymount_Template_Helper' ) ) {
 	        } elseif(is_page_template('template/property-listings-map.php')) {
 	            return true;
 
-	        } elseif(is_page_template('template/template-search.php') && skymount_option('search_result_page') == 'half_map') {
+	        } elseif(is_page_template('template/template-search.php') && yani_option('search_result_page') == 'half_map') {
 	            return true;
 
 	        } elseif ( is_singular( 'property' ) ) {
@@ -670,7 +740,7 @@ if ( ! class_exists( '_skymount_Template_Helper' ) ) {
 
 	    public function is_footer() {
 
-	        $files = apply_filters( 'skymount_is_footer_filter', array(
+	        $files = apply_filters( 'yani_is_footer_filter', array(
 	            'template/user_dashboard_profile.php',
 	            'template/user_dashboard_properties.php',
 	            'template/user_dashboard_favorites.php',
@@ -691,7 +761,21 @@ if ( ! class_exists( '_skymount_Template_Helper' ) ) {
 	        }
 	        return true;
 	    }
-
+	    
+	    public function get_allowed_html() {
+	        $allowed_html_array = array(
+	            'a' => array(
+	                'href' => array(),
+	                'title' => array(),
+	                'target' => array()
+	            ),
+	            'strong' => array(),
+	            'th' => array(),
+	            'td' => array(),
+	            'span' => array(),
+	        ); 
+	        return $allowed_html_array;
+	    }
 
 		public static function get_instance() {
 
@@ -704,7 +788,7 @@ if ( ! class_exists( '_skymount_Template_Helper' ) ) {
 	}
 }
 
-function _skymount_template() {
-	return _skymount_Template_Helper::get_instance();
+function _yani_template(){
+	return _Yani_Template_Helper::get_instance();
 }
 ?>

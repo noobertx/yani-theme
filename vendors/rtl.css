@@ -140,7 +140,7 @@ figure {
 }
 
 .activitiy-item,
-.agent-information li.agent-phone-wrap .houzez-icon,
+.agent-information li.agent-phone-wrap .yani-icon,
 .agent-profile-chart,
 .agents-module-slider,
 .agents-slider-wrap,
@@ -3410,7 +3410,7 @@ label.control.control--checkbox.hz-checkbox-0 {
 .main-nav .dropdown-toggle:after {
     margin-right: 10px;
     display: inline-block;
-    font-family: houzez-iconfont;
+    font-family: yani-iconfont;
     content: "";
     vertical-align: unset;
     font-size: 10px;
@@ -3835,7 +3835,7 @@ label.control.control--checkbox.hz-checkbox-0 {
     right: 15px;
     content: "";
     text-align: center;
-    font-family: houzez-iconfont;
+    font-family: yani-iconfont;
     height: 42px;
     line-height: 42px
 }
@@ -4207,7 +4207,7 @@ label.control.control--checkbox.hz-checkbox-0 {
     padding-bottom: 10px
 }
 
-.features-list-wrap .houzez-icon {
+.features-list-wrap .yani-icon {
     margin-left: 5px
 }
 
@@ -5711,7 +5711,7 @@ label.control.control--checkbox.hz-checkbox-0 {
 
 .breadcrumb-item+.breadcrumb-item:before {
     content: "";
-    font-family: houzez-iconfont;
+    font-family: yani-iconfont;
     font-size: 10px;
     transform: rotate(180deg);
 }
@@ -6015,7 +6015,7 @@ label.control.control--checkbox.hz-checkbox-0 {
     margin-right: 3px
 }
 
-.map-btn .houzez-icon {
+.map-btn .yani-icon {
     font-weight: 700
 }
 
@@ -6957,7 +6957,7 @@ label.control.control--checkbox.hz-checkbox-0 {
     cursor: pointer
 }
 
-.agent-information li.agent-phone-wrap .houzez-icon {
+.agent-information li.agent-phone-wrap .yani-icon {
     top: -4px
 }
 
@@ -7182,7 +7182,7 @@ label.control.control--checkbox.hz-checkbox-0 {
 }
 
 .accordion-header .accordion-title:before {
-    font-family: houzez-iconfont;
+    font-family: yani-iconfont;
     font-size: 14px;
     margin-left: 5px
 }
@@ -10952,7 +10952,7 @@ input.multiple-agent-check {
 
 .widget ul:not(.item-amenities):not(.item-price-wrap):not(.contact-list):not(.dropdown-menu):not(.nav-tabs) li a:before {
     content: "";
-    font-family: houzez-iconfont;
+    font-family: yani-iconfont;
     font-size: 10px
 }
 
@@ -11236,7 +11236,7 @@ input.multiple-agent-check {
 
 .slick-prev:before {
     content: "";
-    font-family: houzez-iconfont
+    font-family: yani-iconfont
 }
 
 .slick-next {
@@ -11245,7 +11245,7 @@ input.multiple-agent-check {
 
 .slick-next:before {
     content: "";
-    font-family: houzez-iconfont
+    font-family: yani-iconfont
 }
 
 .slick-slide img {
@@ -12331,7 +12331,7 @@ div#login-register-form {
 
 .login-form-wrap .form-group-field:after,
 .register-form-wrap .form-group-field:after {
-    font-family: houzez-iconfont;
+    font-family: yani-iconfont;
     color: #636363;
     top: 10px;
     right: 18px
@@ -12522,9 +12522,9 @@ div#login-register-form {
     line-height: 32px;
     justify-content: initial;
 }
-.print-content .block-content-wrap .list-3-cols li .houzez-icon, 
-.print-content .block-content-wrap .list-2-cols li .houzez-icon, 
-.print-content .block-content-wrap .list-1-cols li .houzez-icon {
+.print-content .block-content-wrap .list-3-cols li .yani-icon, 
+.print-content .block-content-wrap .list-2-cols li .yani-icon, 
+.print-content .block-content-wrap .list-1-cols li .yani-icon {
     line-height: 32px;
 }
 .print-content .block-content-wrap .list-2-cols li span,
@@ -12584,7 +12584,7 @@ input:hover {
 
 .bootstrap-select .bs-ok-default:after,
 .bootstrap-select .dropdown-toggle::after {
-    font-family: houzez-iconfont;
+    font-family: yani-iconfont;
     border-style: none
 }
 
@@ -12661,7 +12661,7 @@ html .ui-button.ui-state-disabled:hover {
 .ui-slider-horizontal .ui-slider-handle:after {
     font-size: 11px;
     content: "";
-    font-family: houzez-iconfont;
+    font-family: yani-iconfont;
     top: -1px;
     right: -1px;
     -webkit-transform: rotate(-90deg);
@@ -12921,7 +12921,7 @@ html .ui-button.ui-state-disabled:hover {
     right: 0
 }
 
-.grid-item-icon .houzez-icon,
+.grid-item-icon .yani-icon,
 .labels-right a,
 .widget ul:not(.item-amenities):not(.item-price-wrap):not(.contact-list):not(.dropdown-menu):not(.nav-tabs) li a:before {
     display: inline-block
@@ -12950,7 +12950,7 @@ var {
 }
 
 .dashboard-side-menu-wrap .side-menu .side-menu-dropdown .side-menu-item i,
-.grid-item-icon .houzez-icon,
+.grid-item-icon .yani-icon,
 .menu-edit-property i,
 .nav-mobile .main-nav .nav-item .dropdown-menu .nav-item>a i,
 .widget ul:not(.item-amenities):not(.item-price-wrap):not(.contact-list):not(.dropdown-menu):not(.nav-tabs) li a:before {
@@ -12990,7 +12990,7 @@ var {
     margin-left: 10px
 }
 
-.advanced-search-btn .houzez-icon {
+.advanced-search-btn .yani-icon {
     float: right;
     position: relative;
     top: 11px
@@ -13652,7 +13652,7 @@ var {
 .footer-wrap {
     text-align: right;
 }
-.footer-widget.widget-contact-us .houzez-icon {
+.footer-widget.widget-contact-us .yani-icon {
     float: right;
     margin-right: 0 !important;
     margin-left: 10px;

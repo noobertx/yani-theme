@@ -4,7 +4,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-class skymount_property_type_id_array_walker extends Walker {
+class yani_property_type_id_array_walker extends Walker {
     var $tree_type = 'property_type';
     var $db_fields = array ('parent' => 'parent', 'id' => 'term_id');
 
@@ -27,7 +27,7 @@ class skymount_property_type_id_array_walker extends Walker {
 
 }
 
-class skymount_property_type_slug_array_walker extends Walker {
+class yani_property_type_slug_array_walker extends Walker {
     var $tree_type = 'property_type';
     var $db_fields = array ('parent' => 'parent', 'id' => 'term_id');
 
@@ -50,7 +50,7 @@ class skymount_property_type_slug_array_walker extends Walker {
 
 }
 
-class skymount_property_status_id_array_walker extends Walker {
+class yani_property_status_id_array_walker extends Walker {
     var $tree_type = 'property_status';
     var $db_fields = array ('parent' => 'parent', 'id' => 'term_id');
 
@@ -73,11 +73,11 @@ class skymount_property_status_id_array_walker extends Walker {
 
 }
 
-class skymount_property_status_slug_array_walker extends Walker {
+class yani_property_status_slug_array_walker extends Walker {
     var $tree_type = 'property_status';
     var $db_fields = array ('parent' => 'parent', 'id' => 'term_id');
 
-    var $skymount_array_buffer = array();
+    var $yani_array_buffer = array();
 
     function start_lvl( &$output, $depth = 0, $args = array() ) {
     }
@@ -87,7 +87,7 @@ class skymount_property_status_slug_array_walker extends Walker {
 
 
     function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) {
-        $this->skymount_array_buffer[str_repeat(' - ', $depth) .  $category->name] = $category->slug;
+        $this->yani_array_buffer[str_repeat(' - ', $depth) .  $category->name] = $category->slug;
     }
 
 
@@ -96,8 +96,8 @@ class skymount_property_status_slug_array_walker extends Walker {
 
 }
 
-if ( ! class_exists( '_skymount_Walker_Helper' ) ) {
-	class _skymount_Walker_Helper{
+if ( ! class_exists( '_yani_Walker_Helper' ) ) {
+	class _yani_Walker_Helper{
 		private static $instance = null;		
 
 		public function get_property_field_id_array($field,$add_all_type = true,$walker_instance,$status_label="- All -") {
@@ -111,17 +111,17 @@ if ( ! class_exists( '_skymount_Walker_Helper' ) ) {
 	            'taxonomy'   => $field,
 	        ));
 
-	        $skymount_property_field_id_array_walker = $walker_instance;
-	        $skymount_property_field_id_array_walker->walk($types, 4);
+	        $yani_property_field_id_array_walker = $walker_instance;
+	        $yani_property_field_id_array_walker->walk($types, 4);
 
 	        if ($add_all_type === true) {
 	            $types_buffer[$status_label] = '';
 	            return array_merge(
 	                $types_buffer,
-	                $skymount_property_field_id_array_walker->array_buffer
+	                $yani_property_field_id_array_walker->array_buffer
 	            );
 	        } else {
-	            return $skymount_property_field_id_array_walker->array_buffer;
+	            return $yani_property_field_id_array_walker->array_buffer;
 	        }
 	    }
 
@@ -136,17 +136,17 @@ if ( ! class_exists( '_skymount_Walker_Helper' ) ) {
 	            'taxonomy'   => 'property_type',
 	        ));
 
-	        $skymount_property_field_slug_array_walker = $walker_instance;
-	        $skymount_property_field_slug_array_walker->walk($types, 4);
+	        $yani_property_field_slug_array_walker = $walker_instance;
+	        $yani_property_field_slug_array_walker->walk($types, 4);
 
 	        if ($add_all_type === true) {
 	            $types_buffer[$status_label] = '';
 	            return array_merge(
 	                $types_buffer,
-	                $skymount_property_field_slug_array_walker->array_buffer
+	                $yani_property_field_slug_array_walker->array_buffer
 	            );
 	        } else {
-	            return $skymount_property_field_slug_array_walker->array_buffer;
+	            return $yani_property_field_slug_array_walker->array_buffer;
 	        }
 	    }
 
@@ -161,6 +161,6 @@ if ( ! class_exists( '_skymount_Walker_Helper' ) ) {
 	}
 }
 
-function _skymount_walker() {
-	return _skymount_Walker_Helper::get_instance();
+function _yani_walker() {
+	return _yani_Walker_Helper::get_instance();
 }

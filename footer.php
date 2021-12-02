@@ -2,6 +2,13 @@
 				<?php get_template_part('template-parts/footer/widgets'); ?>
 				<?php get_template_part('template-parts/footer/info'); ?>
 		</footer>
+
+		<?php
+		if( !_yani_template()->is_login_page() ) { 
+			get_template_part('template-parts/login-register/modal-login-register'); 
+		}
+		get_template_part('template-parts/listing/listing-lightbox'); 
+		?>
 		<?php wp_footer();?>
 	</body>
 </html>

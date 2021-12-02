@@ -2,10 +2,10 @@
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
-if ( ! class_exists( '_skymount_Theme_Helper' ) ) {
-	class _skymount_Theme_Helper{
+if ( ! class_exists( '_Yani_Theme_Helper' ) ) {
+	class _Yani_Theme_Helper{
 		private static $instance = null;
-		private $text_domain = "skymount";
+		private $text_domain = "yani";
 
 		public function init(){
 			add_filter( 'style_loader_src', array($this,'remove_wp_ver_css_js'), 9999 );
@@ -25,18 +25,18 @@ if ( ! class_exists( '_skymount_Theme_Helper' ) ) {
 		
 
 		public function get_option( $id, $fallback = false, $param = false ) {
-			if ( isset( $_GET['fave_'.$id] ) ) {
-				if ( '-1' == $_GET['fave_'.$id] ) {
+			if ( isset( $_GET['yani_'.$id] ) ) {
+				if ( '-1' == $_GET['yani_'.$id] ) {
 					return false;
 				} else {
-					return $_GET['fave_'.$id];
+					return $_GET['yani_'.$id];
 				}
 			} else {
-				global $skymount_option;
+				global $yani_option;
 				if ( $fallback == false ) $fallback = '';
-				$output = ( isset($skymount_option[$id]) && $skymount_option[$id] !== '' ) ? $skymount_option[$id] : $fallback;
-				if ( !empty($skymount_option[$id]) && $param ) {
-					$output = $skymount_option[$id][$param];
+				$output = ( isset($yani_option[$id]) && $yani_option[$id] !== '' ) ? $yani_option[$id] : $fallback;
+				if ( !empty($yani_option[$id]) && $param ) {
+					$output = $yani_option[$id][$param];
 				}
 			}
 			return $output;
@@ -56,64 +56,16 @@ if ( ! class_exists( '_skymount_Theme_Helper' ) ) {
 
 		public function is_woocommerce() {
 
-	        if( $this->get_option('skymount_payment_gateways', 'skymount_custom_gw') == 'gw_woocommerce' && class_exists( 'WooCommerce' ) ) {
+	        if( $this->get_option('yani_payment_gateways', 'yani_custom_gw') == 'gw_woocommerce' && class_exists( 'WooCommerce' ) ) {
 	            return true;
 	        } else {
 	            return false;
 	        }
-	    }
-	    public function is_dashboard() {
-
-	        $files = apply_filters( 'skymount_is_dashboard_filter', array(
-	            'template/user_dashboard_profile.php',
-	            'template/user_dashboard_insight.php',
-	            'template/user_dashboard_crm.php',
-	            'template/user_dashboard_properties.php',
-	            'template/user_dashboard_favorites.php',
-	            'template/user_dashboard_invoices.php',
-	            'template/user_dashboard_saved_search.php',
-	            'template/user_dashboard_floor_plans.php',
-	            'template/user_dashboard_multi_units.php',
-	            'template/user_dashboard_membership.php',
-	            'template/user_dashboard_gdpr.php',
-	            'template/user_dashboard_submit.php',
-	            'template/user_dashboard_messages.php'
-	            
-	        ) );
-
-	        if ( is_page_template($files) ) {
-	            return true;
-	        }
-	        return false;
-	    }
+	    }   
 	   
-   		
-
-	   
-	    public function get_form_type() {
-	        $form_type = $this->get_option('form_type', 'custom_form');
-
-	        if($form_type == 'contact_form_7_gravity_form' || $form_type == 'contact_form_7' || $form_type == 'gravity_form' || $form_type == 'hubspot') {
-	            return true;
-	        }
-	        return false;
-	    }
 		
 
-	    public function is_transparent_logo() {
-	        $css_class = '';
-	        $header_type = $this->get_option('header_style');
-	        $transparent = get_post_meta(get_the_ID(), 'fave_main_menu_trans', true);
-
-	        if( $transparent != 'no' && !empty($transparent) && ($header_type == '4') ) {
-	            return true;
-	        }
-
-	        if(_skymount_template()->is_splash()) {
-	            return true;
-	        }
-	        return false;
-	    }
+	    
 
    		public function is_elementor(){
 	        global $post;
@@ -143,7 +95,7 @@ if ( ! class_exists( '_skymount_Theme_Helper' ) ) {
 
     	public function disable_redirect_canonical($redirect_url)    {
 
-	        if (is_singular(array('skymount_agent', 'skymount_agency'))) {
+	        if (is_singular(array('yani_agent', 'yani_agency'))) {
 	            $redirect_url = false;
 	        }
 
@@ -151,7 +103,7 @@ if ( ! class_exists( '_skymount_Theme_Helper' ) ) {
 	    }
 
 	    public  function wpml_translate_single_string($string_name) {
-	        $translated_string = apply_filters('wpml_translate_single_string', $string_name, 'skymount_cfield', $string_name );
+	        $translated_string = apply_filters('wpml_translate_single_string', $string_name, 'yani_cfield', $string_name );
 
 	        return $translated_string;
 	    }
@@ -160,7 +112,7 @@ if ( ! class_exists( '_skymount_Theme_Helper' ) ) {
 	        if ( empty( $color ) )
 	            return false;
 
-	        $current = get_option( 'skymount_recent_colors' );
+	        $current = get_option( 'yani_recent_colors' );
 	        if ( empty( $current ) ) {
 	            $current = array();
 	        }
@@ -176,7 +128,7 @@ if ( ! class_exists( '_skymount_Theme_Helper' ) ) {
 	        }
 
 	        if ( $update ) {
-	            update_option( 'skymount_recent_colors', $current );
+	            update_option( 'yani_recent_colors', $current );
 	        }
 	    }
 
@@ -278,7 +230,7 @@ if ( ! class_exists( '_skymount_Theme_Helper' ) ) {
 	        return false;
 	    }
 
-		public function check_theme_option($option,$value,$return) {
+		public function check_theme_option($option,$value=true,$return=true) {
 	        if( $this->get_option($option, $value) ) {
 	            return $return;
 	        }
@@ -291,6 +243,8 @@ if ( ! class_exists( '_skymount_Theme_Helper' ) ) {
         	}
         	return false;
     	}
+
+    	
 
     	public function get_get_local() {
 	        $local = get_locale();
@@ -308,63 +262,9 @@ if ( ! class_exists( '_skymount_Theme_Helper' ) ) {
       		return $mimes;
     	}
 
-    	public function author_override($output){
-	        global $post, $user_ID;
+    	
 
-	        // return if this isn't the theme author override dropdown
-	        if (!preg_match('/post_author_override/', $output)) return $output;
-
-	        // return if we've already replaced the list (end recursion)
-	        if (preg_match('/post_author_override_replaced/', $output)) return $output;
-
-	        // replacement call to wp_dropdown_users
-	        $output = wp_dropdown_users(array(
-	            'echo' => 0,
-	            'name' => 'post_author_override_replaced',
-	            'selected' => empty($post->ID) ? $user_ID : $post->post_author,
-	            'include_selected' => true
-	        ));
-
-	        // put the original name back
-	        $output = preg_replace('/post_author_override_replaced/', 'post_author_override', $output);
-
-	        return $output;
-	    }
-
-	    public function get_return_traffic_labels( $prop_id ) {
-
-	        $record_days = $this->get_option('skymount_stats_days');
-	        if( empty($record_days) ) {
-	            $record_days = 14;
-	        }
-
-	        $views_by_date = get_post_meta($prop_id, 'skymount_views_by_date', true);
-
-	        if (!is_array($views_by_date)) {
-	            $views_by_date = array();
-	        }
-	        $array_labels = array_keys($views_by_date);
-	        $array_labels = array_slice( $array_labels, -1 * $record_days, $record_days, false );
-
-	        return $array_labels;
-	    }
-
-	    public function get_return_traffic_data($prop_id) {
-
-	        $record_days = skymount_option('skymount_stats_days');
-	        if( empty($record_days) ) {
-	            $record_days = 14;
-	        }
-
-	        $views_by_date = get_post_meta( $prop_id, 'skymount_views_by_date', true );
-	        if ( !is_array( $views_by_date ) ) {
-	            $views_by_date = array();
-	        }
-	        $array_values = array_values( $views_by_date );
-	        $array_values = array_slice( $array_values, -1 * $record_days, $record_days, false );
-
-	        return $array_values;
-	    }
+	    
 
 	    public function generate_unique_key(){
 
@@ -375,28 +275,29 @@ if ( ! class_exists( '_skymount_Theme_Helper' ) ) {
 	    public function browser_body_class($classes) {
         global $post;
         
-        if(skymount_is_dashboard()) {
-            $classes[] = 'skymount-dashboard';
+        if(yani_is_dashboard()) {
+            $classes[] = 'yani-dashboard';
         }    
         
         if ( is_page_template( 'template/template-onepage.php' ) ) {
-            $classes[] = 'skymount-onepage-mode';
+            $classes[] = 'yani-onepage-mode';
         }
 
-        if( skymount_is_half_map() ) {
-            $classes[] = 'skymount-halfmap-page';
+        if( yani_is_half_map() ) {
+            $classes[] = 'yani-halfmap-page';
         }
 
-        $fave_head_trans = 'no';
-        if( skymount_postid_needed() ) {
-            $header_type = get_post_meta($post->ID, 'fave_header_type', true);
-            $fave_page_header_search = get_post_meta($post->ID, 'fave_page_header_search', true);
-            if ($fave_page_header_search != 'yes') {
-                $fave_head_trans = get_post_meta($post->ID, 'fave_main_menu_trans', true);
+        $yani_head_trans = 'no';
+        if( yani_postid_needed() ) {
+            $header_type = get_post_meta($post->ID, 'yani_header_type', true);
+            print_r($header_type );
+            $yani_page_header_search = get_post_meta($post->ID, 'yani_page_header_search', true);
+            if ($yani_page_header_search != 'yes') {
+                $yani_head_trans = get_post_meta($post->ID, 'yani_main_menu_trans', true);
 
-                $classes[] = 'transparent-'.$fave_head_trans;
+                $classes[] = 'transparent-'.$yani_head_trans;
             }
-            $classes[] = 'skymount-header-'.$header_type;
+            $classes[] = 'yani-header-'.$header_type;
         }
             
         return $classes;
@@ -434,6 +335,154 @@ if ( ! class_exists( '_skymount_Theme_Helper' ) ) {
     }
 
 
+    public function get_localization() {
+
+
+		$localization = array(
+
+			/*------------------------------------------------------
+			* Theme
+			*------------------------------------------------------*/
+			'choose_currency' 			=> esc_html__( 'Choose Currency', $this->get_text_domain() ),
+			'disable' 			=> esc_html__( 'Disable', $this->get_text_domain() ),
+			'enable' 			=> esc_html__( 'Enable', $this->get_text_domain() ),
+			'any' 				=> esc_html__( 'Any', $this->get_text_domain() ),
+			'none'				=> esc_html__( 'None', $this->get_text_domain() ),
+			'by_text' 			=> esc_html__( 'by', $this->get_text_domain() ),
+			'at_text' 			=> esc_html__( 'at', $this->get_text_domain() ),
+			'goto_dash' 		=> esc_html__( 'Go to Dashboard', $this->get_text_domain() ),
+			'read_more' 		=> esc_html__( 'Read More', $this->get_text_domain() ),
+			'continue_reading' 	=> esc_html__( 'Continue reading', $this->get_text_domain() ),
+			'follow_us' 		=> esc_html__( 'Follow us', $this->get_text_domain() ),
+			'property' 			=> esc_html__( 'Property', $this->get_text_domain() ),
+			'properties' 		=> esc_html__( 'Properties', $this->get_text_domain() ),
+			'404_page' 			=> esc_html__( 'Back to Homepage', $this->get_text_domain() ),
+			'at' 				=> esc_html__( 'at', $this->get_text_domain() ),
+			'licenses' 			=> esc_html__( 'License', $this->get_text_domain() ),
+			'agent_license' 	=> esc_html__( 'Agent License', $this->get_text_domain() ),
+			'tax_number' 		=> esc_html__( 'Tax Number', $this->get_text_domain() ),
+			'languages' 		=> esc_html__( 'Language', $this->get_text_domain() ),
+			'specialties_label' => esc_html__( 'Specialties', $this->get_text_domain() ),
+			'service_area' 		=> esc_html__( 'Service Areas', $this->get_text_domain() ),
+			'agency_agents' 	=> esc_html__( 'Agents:', $this->get_text_domain() ),
+			'agency_properties' => esc_html__( 'Properties listed', $this->get_text_domain() ),
+			'email' 			=> esc_html__( 'Email', $this->get_text_domain() ),
+			'website' 			=> esc_html__( 'Website', $this->get_text_domain() ),
+			'submit' 			=> esc_html__( 'Submit', $this->get_text_domain() ),
+			'join_discussion' 	=> esc_html__( 'Join The Discussion', $this->get_text_domain() ),
+			'your_name'	 		=> esc_html__( 'Your Name', $this->get_text_domain() ),
+			'your_email'	 	=> esc_html__( 'Your Email', $this->get_text_domain() ),
+			'blog_search'	 	=> esc_html__( 'Search', $this->get_text_domain() ),
+			'featured'	 		=> esc_html__( 'Featured', $this->get_text_domain() ),
+			'label_featured'	=> esc_html__( 'Featured', $this->get_text_domain() ),
+			'view_my_prop'	 	=> esc_html__( 'View Listings', $this->get_text_domain() ),
+			'office_colon'	 	=> esc_html__( 'Office', $this->get_text_domain() ),
+			'mobile_colon'	 	=> esc_html__( 'Mobile', $this->get_text_domain() ),
+			'fax_colon'	 	    => esc_html__( 'Fax', $this->get_text_domain() ),
+			'email_colon'	 	=> esc_html__( 'Email', $this->get_text_domain() ),
+			'follow_us'	 		=> esc_html__( 'Follow us', $this->get_text_domain() ),
+			'type'		 		=> esc_html__( 'Type', $this->get_text_domain() ),
+			'address'		 	=> esc_html__( 'Address', $this->get_text_domain() ),
+			'city'		 		=> esc_html__( 'City', $this->get_text_domain() ),
+			'state_county'      => esc_html__( 'State/County', $this->get_text_domain() ),
+			'zip_post'		    => esc_html__( 'Zip/Post Code', $this->get_text_domain() ),
+			'country'		    => esc_html__( 'Country', $this->get_text_domain() ),
+			'prop_size'		    => esc_html__( 'Property Size', $this->get_text_domain() ),
+			'prop_id'		    => esc_html__( 'Property ID', $this->get_text_domain() ),
+			'garage'		    => esc_html__( 'Garage', $this->get_text_domain() ),
+			'garage_size'		=> esc_html__( 'Garage Size', $this->get_text_domain() ),
+			'year_built'		=> esc_html__( 'Year Built', $this->get_text_domain() ),
+			'time_period'		=> esc_html__( 'Time Period', $this->get_text_domain() ),
+			'unlimited_listings'=> esc_html__( 'Unlimited Listings', $this->get_text_domain() ),
+			'featured_listings' => esc_html__( 'Featured Listings', $this->get_text_domain() ),
+			'package_taxes' 	=> esc_html__( 'Tax', $this->get_text_domain() ),
+			'get_started' 		=> esc_html__( 'Get Started', $this->get_text_domain() ),
+			'save_search'	 	=> esc_html__( 'Save this Search?', $this->get_text_domain() ),
+			'sort_by'		 	=> esc_html__( 'Sort by:', $this->get_text_domain() ),
+			'default_order'	    => esc_html__( 'Default Order', $this->get_text_domain() ),
+			'price_low_high'	=> esc_html__( 'Price (Low to High)', $this->get_text_domain() ),
+			'price_high_low'	=> esc_html__( 'Price (High to Low)', $this->get_text_domain() ),
+			'date_old_new'		=> esc_html__( 'Date Old to New', $this->get_text_domain() ),
+			'date_new_old'		=> esc_html__( 'Date New to Old', $this->get_text_domain() ),
+			'bank_transfer'		=> esc_html__( 'Direct Bank Transfer', $this->get_text_domain() ),
+			'order_number'		=> esc_html__( 'Order Number', $this->get_text_domain() ),
+			'payment_method' 	=> esc_html__( 'Payment Method', $this->get_text_domain() ),
+			'date'				=> esc_html__( 'Date', $this->get_text_domain() ),
+			'total'				=> esc_html__( 'Total', $this->get_text_domain() ),
+			'submit'			=> esc_html__( 'Submit', $this->get_text_domain() ),
+			'search_listing'	=> esc_html__( 'Search Listing', $this->get_text_domain() ),
+
+
+			'view_all_results'	=> esc_html__( 'View All Results', $this->get_text_domain() ),
+			'listins_found'		=> esc_html__( 'Listings found', $this->get_text_domain() ),
+			'auto_result_not_found'		=> esc_html__( 'We didn’t find any results', $this->get_text_domain() ),
+			'auto_view_lists'		=> esc_html__( 'View Listing', $this->get_text_domain() ),
+			'auto_listings'		=> esc_html__( 'Listing', $this->get_text_domain() ),
+			'auto_city'		=> esc_html__( 'City', $this->get_text_domain() ),
+			'auto_area'		=> esc_html__( 'Area', $this->get_text_domain() ),
+			'auto_state'		=> esc_html__( 'State', $this->get_text_domain() ),
+
+
+			'search_invoices'	=> esc_html__( 'Search Invoices', $this->get_text_domain() ),
+			'total_invoices'	=> esc_html__( 'Total Invoices:', $this->get_text_domain() ),
+			'start_date'		=> esc_html__( 'Start date', $this->get_text_domain() ),
+			'end_date'			=> esc_html__( 'End date', $this->get_text_domain() ),
+			'invoice_type'		=> esc_html__( 'Type', $this->get_text_domain() ),
+			'invoice_listing'	=> esc_html__( 'Listing', $this->get_text_domain() ),
+			'invoice_package'	=> esc_html__( 'Package', $this->get_text_domain() ),
+			'invoice_feat_list'		=> esc_html__( 'Listing with Featured', $this->get_text_domain() ),
+			'invoice_upgrade_list'	=> esc_html__( 'Upgrade to Featured', $this->get_text_domain() ),
+			'invoice_status'	=> esc_html__( 'Status', $this->get_text_domain() ),
+			'paid'				=> esc_html__( 'Paid', $this->get_text_domain() ),
+			'not_paid'			=> esc_html__( 'Not Paid', $this->get_text_domain() ),
+			'order'				=> esc_html__( 'Order', $this->get_text_domain() ),
+			'view_details'		=> esc_html__( 'View Details', $this->get_text_domain() ),
+			'payment_details'	=> esc_html__( 'Payment details', $this->get_text_domain() ),
+			'property_title'	=> esc_html__( 'Property Title', $this->get_text_domain() ),
+			'billing_type'		=> esc_html__( 'Billing Type', $this->get_text_domain() ),
+			'billing_for'		=> esc_html__( 'Billing For', $this->get_text_domain() ),
+			'invoice_price'		=> esc_html__( 'Total Price:', $this->get_text_domain() ),
+			'customer_details'	=> esc_html__( 'Customer details:', $this->get_text_domain() ),
+			'customer_name'		=> esc_html__( 'Name:', $this->get_text_domain() ),
+			'customer_email'	=> esc_html__( 'Email:', $this->get_text_domain() ),
+			'search_agency_name'	=> esc_html__( 'Enter agency name', $this->get_text_domain() ),
+			'search_agent_name'	=> esc_html__( 'Enter agent name', $this->get_text_domain() ),
+			'search_agent_btn'	=> esc_html__( 'Search Agent', $this->get_text_domain() ),
+			'search_agency_btn'	=> esc_html__( 'Search Agency', $this->get_text_domain() ),
+			'all_agent_cats'	=> esc_html__( 'All Categories', $this->get_text_domain() ),
+			'all_agent_cities'	=> esc_html__( 'All Cities', $this->get_text_domain() ),
+
+
+			'saved_search_not_found'=> esc_html__( 'You don\'t have any saved search', $this->get_text_domain() ),
+			'properties_not_found'=> esc_html__( 'You don\'t have any properties yet!', $this->get_text_domain() ),
+			'favorite_not_found'=> esc_html__( 'You don\'t have any favorite properties yet!', $this->get_text_domain() ),
+			'email_already_registerd' => esc_html__( 'This email address is already registered', $this->get_text_domain() ),
+			'invalid_email' => esc_html__( 'Invalid email address.', $this->get_text_domain() ),
+			'yani_plugin_required' => esc_html__( 'Please install and activate Houzez theme functionality plugin', $this->get_text_domain() ),
+
+			// Agents
+			'view_profile' => esc_html__( 'View Profile', $this->get_text_domain() ),
+
+			/*------------------------------------------------------
+			* Common
+			*------------------------------------------------------*/
+			'next_text' => esc_html__('Next', $this->get_text_domain()),
+			'prev_text' => esc_html__('Prev', $this->get_text_domain()),
+			'view_label' => esc_html__('View', $this->get_text_domain()),
+			'views_label' => esc_html__('Views', $this->get_text_domain()),
+			'visits_label' => esc_html__('Visits', $this->get_text_domain()),
+			'unique_label' => esc_html__('Unique', $this->get_text_domain()),
+
+			/*------------------------------------------------------
+			* Custom Post Types
+			*------------------------------------------------------*/
+
+
+		);
+
+		return $localization;
+	}
+		
     	public static function get_instance() {
 			// If the single instance hasn't been set, set it now.
 			if ( null == self::$instance ) {
@@ -447,6 +496,6 @@ if ( ! class_exists( '_skymount_Theme_Helper' ) ) {
 }
 
 
-function _skymount_theme() {
-	return _skymount_Theme_Helper::get_instance();
+function _yani_theme() {
+	return _Yani_Theme_Helper::get_instance();
 }

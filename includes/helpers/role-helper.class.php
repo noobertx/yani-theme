@@ -3,18 +3,18 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-if ( ! class_exists( '_skymount_Role_Helper' ) ) {
-	class _skymount_Role_Helper{
+if ( ! class_exists( '_Yani_Role_Helper' ) ) {
+	class _Yani_Role_Helper{
 		private static $instance = null;
 
 		public function check_role() {
 	        global $current_user;
 	        $current_user = wp_get_current_user();
-	        //skymount_agent, subscriber, author, skymount_buyer, skymount_owner, skymount_seller, skymount_manager, skymount_agency
-	        $use_skymount_roles = 1;
+	        //yani_agent, subscriber, author, yani_buyer, yani_owner, yani_seller, yani_manager, yani_agency
+	        $use_yani_roles = 1;
 
-	        if( $use_skymount_roles != 0 ) {
-	            if (in_array('skymount_buyer', (array)$current_user->roles) || in_array('subscriber', (array)$current_user->roles)) {
+	        if( $use_yani_roles != 0 ) {
+	            if (in_array('yani_buyer', (array)$current_user->roles) || in_array('subscriber', (array)$current_user->roles)) {
 	                return false;
 	            }
 	            return true;
@@ -28,7 +28,7 @@ if ( ! class_exists( '_skymount_Role_Helper' ) ) {
 	        $user = new WP_User($user_id); //administrator
 
 	        if( $user->ID == 0 ) {
-	            return 'skymount_guest';
+	            return 'yani_guest';
 	        }
 	        $user_role = $user->roles[0];
 	        return $user_role;
@@ -39,7 +39,7 @@ if ( ! class_exists( '_skymount_Role_Helper' ) ) {
 	        $user = new WP_User($user_id);
 
 	        if( $user->ID == 0 ) {
-	            return 'skymount_guest';
+	            return 'yani_guest';
 	        }
 	        $user_role = $user->roles[0];
 	        return $user_role;
@@ -56,6 +56,6 @@ if ( ! class_exists( '_skymount_Role_Helper' ) ) {
 	}
 }
 
-function _skymount_role() {
-	return _skymount_Role_Helper::get_instance();
+function _yani_role() {
+	return _Yani_Role_Helper::get_instance();
 }

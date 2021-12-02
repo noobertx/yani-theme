@@ -3,8 +3,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-if ( ! class_exists( '_skymount_Author_Helper' ) ) {
-	class _skymount_Author_Helper{
+if ( ! class_exists( '_Yani_Author_Helper' ) ) {
+	class _Yani_Author_Helper{
 		private static $instance = null;	
 
 		public function get_avatar_url($get_avatar){
@@ -16,6 +16,29 @@ if ( ! class_exists( '_skymount_Author_Helper' ) ) {
         	$post = get_post( $post_id );
         	return $post->post_author;
     	}
+    	
+    	public function author_override($output){
+	        global $post, $user_ID;
+
+	        // return if this isn't the theme author override dropdown
+	        if (!preg_match('/post_author_override/', $output)) return $output;
+
+	        // return if we've already replaced the list (end recursion)
+	        if (preg_match('/post_author_override_replaced/', $output)) return $output;
+
+	        // replacement call to wp_dropdown_users
+	        $output = wp_dropdown_users(array(
+	            'echo' => 0,
+	            'name' => 'post_author_override_replaced',
+	            'selected' => empty($post->ID) ? $user_ID : $post->post_author,
+	            'include_selected' => true
+	        ));
+
+	        // put the original name back
+	        $output = preg_replace('/post_author_override_replaced/', 'post_author_override', $output);
+
+	        return $output;
+	    }
 
 	    public function get_user_packages_meta( $post_id, $field = false ) {
 
@@ -23,7 +46,7 @@ if ( ! class_exists( '_skymount_Author_Helper' ) ) {
 	            'package_name' => ''
 	        );
 
-	        $meta = get_post_meta( $post_id, '_skymount_user_package_meta', true );
+	        $meta = get_post_meta( $post_id, '_yani_user_package_meta', true );
 	        $meta = wp_parse_args( (array) $meta, $defaults );
 
 	        if ( $field ) {
@@ -36,7 +59,7 @@ if ( ! class_exists( '_skymount_Author_Helper' ) ) {
 	        return $meta;
 	    }
 
-	    public function get_post_type_array($post_type="skymount_agent") {
+	    public function get_post_type_array($post_type="yani_agent") {
 	        $agents_array = array(
 	            - 1 => $this->get('cl_none', 'None'),
 	        );
@@ -76,6 +99,6 @@ if ( ! class_exists( '_skymount_Author_Helper' ) ) {
 	}
 }
 
-function _skymount_author() {
-	return _skymount_Author_Helper::get_instance();
+function _yani_author() {
+	return _Yani_Author_Helper::get_instance();
 }

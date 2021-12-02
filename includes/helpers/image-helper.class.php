@@ -3,8 +3,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-if ( ! class_exists( '_skymount_Image_Helper' ) ) {
-	class _skymount_Image_Helper{
+if ( ! class_exists( '_Yani_Image_Helper' ) ) {
+	class _Yani_Image_Helper{
 		private static $instance = null;
 
 		public function init(){
@@ -12,7 +12,7 @@ if ( ! class_exists( '_skymount_Image_Helper' ) ) {
 		}
 
 		public function get_image_placeholder( $featured_image_size ){
-	        $placeholder_url = _skymount_theme()->get_option( 'skymount_placeholder', false, 'url' );
+	        $placeholder_url = _yani_theme()->get_option( 'yani_placeholder', false, 'url' );
 
 	        if ( ! empty( $placeholder_url ) ) {
 	            $placeholder_image_id = attachment_url_to_postid( $placeholder_url );
@@ -76,7 +76,7 @@ if ( ! class_exists( '_skymount_Image_Helper' ) ) {
 
 	    public function get_image_placeholder_url( $image_size ){
 
-	        $placeholder_url = _skymount_theme()->get_option( 'skymount_placeholder', false, 'url' );
+	        $placeholder_url = _yani_theme()->get_option( 'yani_placeholder', false, 'url' );
 	        if ( ! empty( $placeholder_url ) ) {
 	            $placeholder_image_id = attachment_url_to_postid( $placeholder_url );
 	            if ( ! empty( $placeholder_image_id ) ) {
@@ -89,7 +89,7 @@ if ( ! class_exists( '_skymount_Image_Helper' ) ) {
 
 
 	    public function remove_default_images( $sizes ) {
-	        if ( 'true' == get_option( 'skymount_unset_default_image_sizes' ) ) {
+	        if ( 'true' == get_option( 'yani_unset_default_image_sizes' ) ) {
 	            unset( $sizes['small'] ); // 150px
 	            unset( $sizes['medium'] ); // 300px
 	            unset( $sizes['medium_large'] ); // 768px
@@ -123,6 +123,6 @@ if ( ! class_exists( '_skymount_Image_Helper' ) ) {
 	}
 }
 
-function _skymount_image() {
-	return _skymount_Image_Helper::get_instance();
+function _yani_image() {
+	return _Yani_Image_Helper::get_instance();
 }

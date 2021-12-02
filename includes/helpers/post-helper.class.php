@@ -3,23 +3,51 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-if ( ! class_exists( '_skymount_Post_Helper' ) ) {
-	class _skymount_Post_Helper{
+if ( ! class_exists( '_Yani_Post_Helper' ) ) {
+	class _Yani_Post_Helper{
 		private static $instance = null;		
 
 		public function init(){
 			add_filter('wp_link_pages_args', array($this,'add_link_pages_args_prevnext'));
 		}
 
-		public function is_transparent() {
-	        $transparent = get_post_meta(get_the_ID(), 'fave_main_menu_trans', true);
+		public function can_be_editted() {
+	        if ( isset( $_GET[ 'edit_property' ] ) && ! empty( $_GET[ 'edit_property' ] ) ) {
+	            return true;
+	        }
 
-	        if( $transparent != 'no' && !empty($transparent) ) {
+	        return false;
+	    }
+
+	    
+	    public function is_published( $post_id ) {
+	        if( get_post_status( $post_id ) == 'publish' ) {
 	            return true;
 	        }
 	        return false;
 	    }
 
+	    public function check_post_status( $post_id ,$status) {
+	        if( get_post_status( $post_id ) == 'draft' ) {
+	            return true;
+	        }
+	        return false;
+	    }
+
+		
+	    
+	    public function check_post_types_plugin($post_type) {
+
+	        if(class_exists('yani_Post_Type')) {
+	            if(yani_Post_Type::get_setting($post_type) != 'disabled') {
+	                return true;
+	            } else {
+	                return false;
+	            }
+	        }
+
+	        return true;
+	    }
 		public function render_pagination( $pages = '' ) {        
 	        $paged = 1;
 	        if ( get_query_var( 'paged' ) ) {
@@ -53,7 +81,7 @@ if ( ! class_exists( '_skymount_Post_Helper' ) ) {
 	                        if( $paged > 2 && $paged > $range+1 && $showitems < $pages ) { 
 	                            $output .= '<li class="page-item">';
 	                                $output .= '<a class="page-link" href="'.get_pagenum_link(1).'" aria-label="Previous">';
-	                                    $output .= '<i class="skymount-icon arrow-button-left-1"></i>';
+	                                    $output .= '<i class="yani-icon arrow-button-left-1"></i>';
 	                                $output .= '</a>';
 	                            $output .= '</li>';
 	                        }
@@ -61,13 +89,13 @@ if ( ! class_exists( '_skymount_Post_Helper' ) ) {
 	                        if( $paged > 1 ) { 
 	                            $output .= '<li class="page-item">';
 	                                $output .= '<a class="page-link" href="'.get_pagenum_link($prev).'" aria-label="Previous">';
-	                                    $output .= '<i class="skymount-icon icon-arrow-left-1"></i>';
+	                                    $output .= '<i class="yani-icon icon-arrow-left-1"></i>';
 	                                $output .= '</a>';
 	                            $output .= '</li>';
 	                        } else {
 	                            $output .= '<li class="page-item disabled">';
 	                                $output .= '<a class="page-link" aria-label="Previous">';
-	                                    $output .= '<i class="skymount-icon icon-arrow-left-1"></i>';
+	                                    $output .= '<i class="yani-icon icon-arrow-left-1"></i>';
 	                                $output .= '</a>';
 	                            $output .= '</li>';
 	                        }
@@ -88,7 +116,7 @@ if ( ! class_exists( '_skymount_Post_Helper' ) ) {
 	                        if($paged < $pages) {
 	                            $output .= '<li class="page-item">';
 	                                $output .= '<a class="page-link" href="'.get_pagenum_link($next).'" aria-label="Next">';
-	                                    $output .= '<i class="skymount-icon icon-arrow-right-1"></i>';
+	                                    $output .= '<i class="yani-icon icon-arrow-right-1"></i>';
 	                                $output .= '</a>';
 	                            $output .= '</li>';
 	                        }
@@ -96,7 +124,7 @@ if ( ! class_exists( '_skymount_Post_Helper' ) ) {
 	                        if( $paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages ) {
 	                            $output .= '<li class="page-item">';
 	                                $output .= '<a class="page-link" href="'.get_pagenum_link( $pages ).'" aria-label="Next">';
-	                                    $output .= '<i class="skymount-icon arrow-button-right-1"></i>';
+	                                    $output .= '<i class="yani-icon arrow-button-right-1"></i>';
 	                                $output .= '</a>';
 	                            $output .= '</li>';
 	                        }
@@ -113,20 +141,20 @@ if ( ! class_exists( '_skymount_Post_Helper' ) ) {
 
    		public function count_property_views( $prop_id ) {
 
-	        $total_views = intval( get_post_meta($prop_id, 'skymount_total_property_views', true) );
+	        $total_views = intval( get_post_meta($prop_id, 'yani_total_property_views', true) );
 
 	        if( $total_views != '' ) {
 	            $total_views++;
 	        } else {
 	            $total_views = 1;
 	        }
-	        update_post_meta( $prop_id, 'skymount_total_property_views', $total_views );
+	        update_post_meta( $prop_id, 'yani_total_property_views', $total_views );
 
 	        $today = date('m-d-Y', time());
 	        $today_time = date('m-d-Y h:i:s', time());
 
 	        //$today = date('m-d-Y', strtotime("-1 days"));
-	        $views_by_date = get_post_meta($prop_id, 'skymount_views_by_date', true);
+	        $views_by_date = get_post_meta($prop_id, 'yani_views_by_date', true);
 
 	        if( $views_by_date != '' || is_array($views_by_date) ) {
 	            if (!isset($views_by_date[$today])) {
@@ -144,8 +172,8 @@ if ( ! class_exists( '_skymount_Post_Helper' ) ) {
 	            $views_by_date[$today] = 1;
 	        }
 
-	        update_post_meta($prop_id, 'skymount_views_by_date', $views_by_date);
-	        update_post_meta($prop_id, 'skymount_recently_viewed', current_time('mysql'));
+	        update_post_meta($prop_id, 'yani_views_by_date', $views_by_date);
+	        update_post_meta($prop_id, 'yani_recently_viewed', current_time('mysql'));
 
     	}
 
@@ -211,11 +239,11 @@ if ( ! class_exists( '_skymount_Post_Helper' ) ) {
 
 	        if( 1 != $pages ){
 
-	            echo '<div class="pagination-wrap skymount_ajax_pagination">';
+	            echo '<div class="pagination-wrap yani_ajax_pagination">';
 	            echo '<nav>';
 	            echo '<ul class="pagination justify-content-center">';
 	            echo ( $paged > 2 && $paged > $range+1 && $showitems < $pages ) ? '<li class="page-item"><a class="page-link" data-houzepagi="1" rel="First" href="'.get_pagenum_link(1).'"><span aria-hidden="true"><i class="fa fa-angle-double-left"></i></span></a></li>' : '';
-	            echo ( $paged > 1 ) ? '<li class="page-item"><a class="page-link" data-houzepagi="'.$prev.'" rel="Prev" href="'.get_pagenum_link($prev).'"><i class="skymount-icon icon-arrow-left-1"></i></a></li>' : '<li class="page-item disabled"><a class="page-link" aria-label="Previous"><i class="skymount-icon icon-arrow-left-1"></i></a></li>';
+	            echo ( $paged > 1 ) ? '<li class="page-item"><a class="page-link" data-houzepagi="'.$prev.'" rel="Prev" href="'.get_pagenum_link($prev).'"><i class="yani-icon icon-arrow-left-1"></i></a></li>' : '<li class="page-item disabled"><a class="page-link" aria-label="Previous"><i class="yani-icon icon-arrow-left-1"></i></a></li>';
 	            for ( $i = 1; $i <= $pages; $i++ ) {
 	                if ( 1 != $pages &&( !( $i >= $paged+$range+1 || $i <= $paged-$range-1 ) || $pages <= $showitems ) )
 	                {
@@ -226,7 +254,7 @@ if ( ! class_exists( '_skymount_Post_Helper' ) ) {
 	                    }
 	                }
 	            }
-	            echo ( $paged < $pages ) ? '<li class="page-item"><a class="page-link" data-houzepagi="'.$next.'" rel="Next" href="'.get_pagenum_link($next).'"><i class="skymount-icon icon-arrow-right-1"></i></a></li>' : '';
+	            echo ( $paged < $pages ) ? '<li class="page-item"><a class="page-link" data-houzepagi="'.$next.'" rel="Next" href="'.get_pagenum_link($next).'"><i class="yani-icon icon-arrow-right-1"></i></a></li>' : '';
 	            echo ( $paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages ) ? '<li class="page-item"><a class="page-link" data-houzepagi="'.$pages.'" rel="Last" href="'.get_pagenum_link( $pages ).'"><span aria-hidden="true"><i class="fa fa-angle-double-right"></i></span></a></li>' : '';
 	            echo '</ul>';
 	            echo '</nav>';
@@ -236,7 +264,7 @@ if ( ! class_exists( '_skymount_Post_Helper' ) ) {
 	    }
 
 	    public  function loadmore($max_num_pages) {
-	        $more_link = get_next_posts_link( __('Load More', _skymount_theme()->get_text_domain()), $max_num_pages );
+	        $more_link = get_next_posts_link( __('Load More', _yani_theme()->get_text_domain()), $max_num_pages );
 	        $allowed_html_array = array(
 	            'a' => array(
 	                'href' => array(),
@@ -245,7 +273,7 @@ if ( ! class_exists( '_skymount_Post_Helper' ) ) {
 	        );
 
 	        if(!empty($more_link)) : ?>
-	            <div id="fave-pagination-loadmore" class="pagination-wrap fave-load-more">
+	            <div id="yani-pagination-loadmore" class="pagination-wrap yani-load-more">
 	                <div class="pagination">
 	                    <?php echo wp_kses( $more_link, $allowed_html_array); ?>
 	                </div>
@@ -253,7 +281,7 @@ if ( ! class_exists( '_skymount_Post_Helper' ) ) {
 	        <?php endif;
 	    }
 
-	    public function skymount_admin_post_type () {
+	    public function yani_admin_post_type () {
 	        global $post, $parent_file, $typenow, $current_screen, $pagenow;
 
 	        $post_type = NULL;
@@ -295,7 +323,7 @@ if ( ! class_exists( '_skymount_Post_Helper' ) ) {
             'invoice_buyer_id' => ''
         );
 
-        $meta = get_post_meta( $post_id, '_skymount_invoice_meta', true );
+        $meta = get_post_meta( $post_id, '_yani_invoice_meta', true );
         $meta = wp_parse_args( (array) $meta, $defaults );
 
         if ( $field ) {
@@ -345,6 +373,6 @@ if ( ! class_exists( '_skymount_Post_Helper' ) ) {
 	}
 }
 
-function _skymount_post() {
-	return _skymount_Post_Helper::get_instance();
+function _yani_post() {
+	return _Yani_Post_Helper::get_instance();
 }
