@@ -31,7 +31,7 @@ function _themename_assets(){
 
     wp_enqueue_style('bootstrap-datepicker', YANI_THEME_VENDORS . 'bootstrap-datepicker.min.css', array(), '1.8.0');
     wp_enqueue_style('theme-main', YANI_THEME_STYLING . 'theme.css', array(), microtime());
-    wp_enqueue_style('houzez-styling-options', YANI_THEME_VENDORS . 'styling-options'.$css_minify_prefix.'.css', array(), YANI_THEME_VERSION);
+    wp_enqueue_style('houzez-styling-options', YANI_THEME_VENDORS . 'styling-options'.$css_minify_prefix.'.css', array(), microtime());
 
 
     //should enqueued on selected page

@@ -11,7 +11,7 @@ if ( ! class_exists( '_Yani_Theme_Helper' ) ) {
 			add_filter( 'style_loader_src', array($this,'remove_wp_ver_css_js'), 9999 );
 			add_filter( 'script_loader_src', array($this,'remove_wp_ver_css_js'), 9999 );
 			add_filter('redirect_canonical', array($this,'disable_redirect_canonical'));
-			add_action('widgets_init', array($this,'remove_recent_comments_style'));
+			// add_action('widgets_init', array($this,'remove_recent_comments_style'));
 
     		add_action( 'elementor/theme/register_locations', array($this,'register_elementor_templates_locations' ));
     		add_filter('wp_dropdown_users', array($this,'author_override'));
@@ -275,7 +275,7 @@ if ( ! class_exists( '_Yani_Theme_Helper' ) ) {
 	    public function browser_body_class($classes) {
         global $post;
         
-        if(yani_is_dashboard()) {
+        if(_yani_template()->is_dashboard()) {
             $classes[] = 'yani-dashboard';
         }    
         
@@ -283,22 +283,25 @@ if ( ! class_exists( '_Yani_Theme_Helper' ) ) {
             $classes[] = 'yani-onepage-mode';
         }
 
-        if( yani_is_half_map() ) {
+        if( _yani_template()->is_half_map() ) {
             $classes[] = 'yani-halfmap-page';
         }
 
         $yani_head_trans = 'no';
-        if( yani_postid_needed() ) {
-            $header_type = get_post_meta($post->ID, 'yani_header_type', true);
-            print_r($header_type );
-            $yani_page_header_search = get_post_meta($post->ID, 'yani_page_header_search', true);
-            if ($yani_page_header_search != 'yes') {
-                $yani_head_trans = get_post_meta($post->ID, 'yani_main_menu_trans', true);
 
-                $classes[] = 'transparent-'.$yani_head_trans;
-            }
-            $classes[] = 'yani-header-'.$header_type;
-        }
+        $classes[] = $this->get_header_style();
+
+        // if( _yani_template()->is_postid_needed() ) {
+        //     $header_type = get_post_meta($post->ID, 'yani_header_type', true);
+        //     print_r($header_type );
+        //     $yani_page_header_search = get_post_meta($post->ID, 'yani_page_header_search', true);
+        //     if ($yani_page_header_search != 'yes') {
+        //         $yani_head_trans = get_post_meta($post->ID, 'yani_main_menu_trans', true);
+
+        //         $classes[] = 'transparent-'.$yani_head_trans;
+        //     }
+        //     $classes[] = 'yani-header-'.$header_type;
+        // }
             
         return $classes;
     }
@@ -482,6 +485,36 @@ if ( ! class_exists( '_Yani_Theme_Helper' ) ) {
 
 		return $localization;
 	}
+
+	public function get_header_style($firstpartonly=false){
+			$header_layout = false;
+			$header_layout =  $this->get_option('header_style');
+			if (strpos($header_layout, ',')) {
+
+			// multiple header parameters
+
+			$a_header_layout = explode(',', $header_layout);
+
+			// return ONLY first parameter
+
+			if ($firstpartonly) {
+				return 'header-'.$a_header_layout[0];
+			}
+
+			foreach ((array)$a_header_layout as $key => $val) {
+				$a_header_layout[$key] = 'header-'. $val;
+			}
+			
+			$header = implode(' ', $a_header_layout);
+			
+			} else {
+				// one parameter
+				$header = 'header-'. $header_layout;
+			}
+
+			return $header;
+		}
+
 		
     	public static function get_instance() {
 			// If the single instance hasn't been set, set it now.
@@ -499,3 +532,5 @@ if ( ! class_exists( '_Yani_Theme_Helper' ) ) {
 function _yani_theme() {
 	return _Yani_Theme_Helper::get_instance();
 }
+
+return _Yani_Theme_Helper::get_instance()->init();

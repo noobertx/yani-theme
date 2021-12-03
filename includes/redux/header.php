@@ -13,7 +13,7 @@ Redux::set_section( $opt_name, array(
     'subsection'       => true,
     'desc'             => '',
     'fields'           => array(
-        array(
+        /*array(
             'id'       => 'header_style',
             'type'     => 'image_select',
             'title'    => esc_html__( 'Header Style', $theme_text_domain ),
@@ -45,6 +45,37 @@ Redux::set_section( $opt_name, array(
                     'img' => YANI_THEME_IMAGES . 'header/header-style-6.jpg'
                 ),
                 
+            ),
+            'desc'     => '',
+        ), */
+        array(
+            'id'       => 'header_style',
+            'type'     => 'select',
+            'title'    => esc_html__( 'Header Style', $theme_text_domain ),
+            'subtitle' => '',
+            'default'  => 'classic',// 1 = on | 0 = off
+            'options'  => array(
+                'classic' => __( 'Classic', $theme_text_domain ),
+                'modern' => __( 'Modern', $theme_text_domain ),
+                'plain' => __( 'Plain', $theme_text_domain ),
+                'stack,left' => __( 'Stack | Left', $theme_text_domain ),
+                'stack,center' => __( 'Stack | Center', $theme_text_domain ),
+                'stack,right' => __( 'Stack | Right', $theme_text_domain ),
+                'stack,magazine' => __( 'Magazine', $theme_text_domain ),
+                'creative' => __( 'Creative', $theme_text_domain ),
+                'creative,rtl' => __( 'Creative | Right', $theme_text_domain ),
+                'creative,open' => __( 'Creative | Open', $theme_text_domain ),
+                'creative,open,rtl' => __( 'Creative | Right + Open', $theme_text_domain ),
+                'fixed' => __( 'Fixed', $theme_text_domain ),
+                'transparent' => __( 'Transparent', $theme_text_domain ),
+                'simple' => __( 'Simple', $theme_text_domain ),
+                'simple,empty' => __( 'Empty', $theme_text_domain ),
+                'below' => __( 'Below slider', $theme_text_domain ),
+                'split' => __( 'Split menu', $theme_text_domain ),
+                'split,semi' => __( 'Split menu | Semitransparent', $theme_text_domain ),
+                'below,split' => __( 'Below slider + Split menu', $theme_text_domain ),
+                'overlay,transparent' => __( 'Overlay | 1 level menu', $theme_text_domain ),
+                'shop' => __( 'Shop', $theme_text_domain ),
             ),
             'desc'     => '',
         ),

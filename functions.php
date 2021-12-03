@@ -47,7 +47,7 @@ function _themename_post_meta(){
 /*Classes*/
 // require_once("framework/classes/class-property-post-type.php");
 
-require_once("includes/enqueue-assets.php");
+
 
 require_once( 'framework/crm/yani-crm.php');
 require_once( 'framework/functions/message-functions.php');
