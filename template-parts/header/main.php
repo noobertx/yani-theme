@@ -9,11 +9,11 @@
 
             if(_yani_theme()->get_header_style(true) != 'header-creative'){
                 if(_yani_theme()->get_header_style(true) == 'header-shop'){
+
                     get_template_part('template-parts/header/header-style', 'shop');
-                }else{
-                    // if( _yani_theme()->get_option('top_bar') ) {
-                        get_template_part('template-parts/topbar/top', 'area');
-                    // }
+                }else{                    
+                    get_template_part('template-parts/topbar/top', 'area');
+                   
 
                     $header = _yani_theme()->get_option('header_style'); 
                     if(empty($header) || _yani_template()->is_splash()) {

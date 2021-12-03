@@ -9,6 +9,10 @@
 		}
 		get_template_part('template-parts/listing/listing-lightbox'); 
 		?>
+
+		<?php if(_yani_theme()->get_header_style(true) == 'header-simple'){ ?>
+			<?php get_template_part('template-parts/header/header','side-slide'); ?>
+		<?php } ?>
 		<?php wp_footer();?>
 	</body>
 </html>
