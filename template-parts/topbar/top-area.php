@@ -20,17 +20,33 @@ We Need Actionbar Option
 </div>
 
 
-<?php
-/*
-header Overlay here
-*/
-?>
-<div class="header_placeholder"></div>
+<?php if(_yani_theme()->get_header_style(true) == 'header-overlay'){ ?>
+    <div id="header-overlay-wrap">
+        <div class="close-wrapper">
+            <a href="#" class="close">
+                <i class="yani-icon icon-close"></i>
+            </a>
+        </div>
+        <div class="menu-wrapper">
+            <nav class="main-nav on-hover-menu navbar-expand-lg flex-grow-1">
+                <?php get_template_part('template-parts/header/partials/nav'); ?>
+            </nav><!-- main-nav -->
+        </div>
+    </div>
 
+    <a class="side-slide-toggle" data-target="header-overlay-wrap" href="#" aria-label="Mobile menu">
+        <i class="yani-icon icon-navigation-menu" aria-hidden="true"></i>
+    </a>
+
+<?php } ?>
+<div class="header_placeholder"></div>
+<?php if(_yani_theme()->get_header_style(true) != 'header-overlay'){ ?>
 <div id="top-bar" class="loading">
     <div class="container">
         <div class="column one">
+
             <div class="header-inner-wrap">
+
                 <div class="navbar d-flex align-items-center">
                     <?php get_template_part('template-parts/header/partials/logo'); ?>
 
@@ -74,3 +90,4 @@ header Overlay here
         </div>
     </div>
 </div>
+<?php } ?>
