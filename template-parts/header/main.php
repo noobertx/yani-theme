@@ -1,4 +1,5 @@
-<?php if(_yani_theme()->get_header_style() == 'header-creative'){
+<?php
+ if(_yani_theme()->get_header_style(true) == 'header-creative'){
     get_template_part('template-parts/header/header', 'creative');
 }
 ?>
