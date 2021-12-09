@@ -1,9 +1,7 @@
 <div id="header-creative">
 	<div class="header-creative-panel">		
 		<?php
-			 $isOpen = explode(" ",_yani_theme()->get_header_style())[1];
-			 // echo $isOpen;
-			 if($isOpen!="header-open"){		?>
+			 if(!in_array(_yani_theme()->get_header_style(), array( 'header-open' ))){		?>
 				<a href="#" class="side-slide-toggle" data-target="side-creative-panel">
 					<i class="yani-icon icon-navigation-menu" aria-hidden="true"></i>
 				</a>

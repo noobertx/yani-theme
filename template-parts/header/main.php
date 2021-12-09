@@ -21,7 +21,7 @@
                         $header = '4';
                     }
                     // get_template_part('template-parts/header/header-1'); 
-                    // get_template_part('template-parts/header/header-mobile'); 
+                    get_template_part('template-parts/header/header-mobile'); 
                 }
             }           
         ?>
