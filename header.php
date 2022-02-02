@@ -86,7 +86,7 @@ $yani_local = _yani_theme()->get_text_domain();
 		}
 	} // Header search End
 	get_template_part('template-parts/banners/main');
-?>
 
+?>
 
 	<?php } ?>

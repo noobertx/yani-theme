@@ -1,9 +1,9 @@
 <?php 
-$header_width = _yani_theme()->get_option('header_1_width');
-if(_yani_template()->is_half_map()) {
+$header_width = _themename_theme()->get_option('header_1_width');
+if(_themename_template()->is_half_map()) {
     $header_width = 'container-fluid';
 }
-$sticky_header = _yani_theme()->get_option('main-menu-sticky', 0);
+$sticky_header = _themename_theme()->get_option('main-menu-sticky', 0);
 ?>
 <div id="header-section" class="header-desktop header-v1" data-sticky="<?php echo intval($sticky_header); ?>">
 	<div class="<?php echo esc_attr($header_width); ?>">
