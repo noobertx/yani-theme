@@ -14,14 +14,16 @@ $yani_local = _yani_theme()->get_text_domain();
 <body <?php body_class();?>>
 	<?php wp_body_open(); ?>
 
-	<?php get_template_part('template-parts/header/nav-mobile'); ?>
 
+	<?php get_template_part('template-parts/header/nav-mobile'); ?>
+		
 	<?php if(_yani_template()->is_dashboard()) { ?>
 
-	<?php } else { ?>
+	<?php } else { 
+
+		?>
 
 		<main id="main-wrap" class="main-wrap <?php if(_yani_template()->is_splash()) { echo 'splash-page-wrap'; }?>">
-
 		<?php 
 			if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'header' ) ) {
 				get_template_part('template-parts/header/main'); 
