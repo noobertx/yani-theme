@@ -5,7 +5,8 @@ require_once("utils/lazy-load.php");
 		$text_domain = "_themename";
 		load_theme_textdomain($text_domain,get_stylesheet_directory().'/languages/');
 		load_theme_textdomain($text_domain,get_template_directory().'/languages/');
-
+		add_theme_support('post-thumbnails');
+		add_theme_support('custom-header');
 		add_theme_support('title-tag');
 		add_theme_support('post-thumbnails');
 		add_theme_support('html5',array(
