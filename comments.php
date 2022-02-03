@@ -33,7 +33,7 @@
 			'style' => 'li',
 			'avatar_size'=>50,
 			'reply_text' => __('Reply','_themename'),
-			'callback' => '_themename_callback'
+			// 'callback' => '_themename_callback'
 
 		));
 		}
