@@ -1,11 +1,11 @@
 <section class="page-content-wrapper">	
 	<?php
 global $custom_wprig_opt;
-		if($custom_wprig_opt['opt-page-layout']=="left-sidebar"):
-			if(is_active_sidebar('primary-sidebar')) : 
-				get_sidebar();
-			endif;
-		endif;
+		// if($custom_wprig_opt['opt-page-layout']=="left-sidebar"):
+		// 	if(is_active_sidebar('primary-sidebar')) : 
+		// 		get_sidebar();
+		// 	endif;
+		// endif;
 	?>
 
 <?php if(have_posts()){ ?>
@@ -20,11 +20,11 @@ global $custom_wprig_opt;
 </section>
 
 <?php
-		if($custom_wprig_opt['opt-page-layout']=="right-sidebar"):
-			if(is_active_sidebar('primary-sidebar')) : 
-				get_sidebar();
-			endif;
-		endif;
+		// if($custom_wprig_opt['opt-page-layout']=="right-sidebar"):
+		// 	if(is_active_sidebar('primary-sidebar')) : 
+		// 		get_sidebar();
+		// 	endif;
+		// endif;
 	?>
 
 <?php }else{ ?>

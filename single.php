@@ -21,7 +21,9 @@
 		<?php //} ?>
 	<?php }?>
 
-	<?php the_posts_pagination(); ?>
+	<?php echo  the_posts_pagination(); ?>
+	<?php echo previous_post_link(); ?>
+	<?php echo next_post_link(); ?>
 <?php }else{ ?>
 		<?php get_template_part('template-parts/post/content','none'); ?>
 <?php } ?>
