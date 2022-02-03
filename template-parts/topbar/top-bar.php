@@ -27,7 +27,7 @@ if( $top_bar_mobile != 0 ) {
                         get_template_part( 'template-parts/topbar/partials/area-switcher' );
 
                     } elseif ( $top_bar_left == 'menu_bar' ) {
-                        get_template_part( 'template-parts/topbar/partials/nav' );
+                        // get_template_part( 'template-parts/topbar/partials/nav' );
                     }
 				}?>
 			</div><!-- top-bar-left-wrap -->
@@ -48,7 +48,7 @@ if( $top_bar_mobile != 0 ) {
                         get_template_part( 'template-parts/topbar/partials/currency-switcher' );
                         get_template_part( 'template-parts/topbar/partials/area-switcher' );
                     } elseif ( $top_bar_right == 'menu_bar' ) {
-                        get_template_part( 'template-parts/topbar/partials/nav' );
+                        // get_template_part( 'template-parts/topbar/partials/nav' );
                     }
 				}?>
 			</div><!-- top-bar-right-wrap -->

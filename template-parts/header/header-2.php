@@ -11,12 +11,13 @@
             </div>
         </div>
     </div><!-- .header-top -->
+    asdasdasd
     <div id="header-section" class="header-bottom" data-sticky="<?php echo intval($sticky_header); ?>">
         <div class="container">
             <div class="header-inner-wrap">
                 <div class="navbar d-flex align-items-center">
                     
-                    <nav class="main-nav on-hover-menu navbar-expand-lg flex-grow-1">
+                    <nav class="main-nav on-hover-menu navbar-expand-lg flex-grow-1 navbar-dark bg-dark">
                         <?php get_template_part('template-parts/header/partials/nav'); ?>
                     </nav><!-- main-nav -->
                     

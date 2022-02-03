@@ -20,14 +20,28 @@ if(_yani_template()->is_splash()) {
 }
 
 if ( has_nav_menu( 'main-menu' ) ) :
-	wp_nav_menu( array (
-		'theme_location' => 'main-menu',
-		'container' => '',
-		'container_class' => '',
-		'menu_class' => 'navbar-nav '.$alignClass,
-		'menu_id' => 'main-nav',
-		'depth' => 4,
-		'walker' => new yani_nav_walker()
-	));
+	// wp_nav_menu( array (
+	// 	'theme_location' => 'main-menu',
+	// 	'container' => '',
+	// 	'container_class' => '',
+	// 	'menu_class' => 'navbar-nav '.$alignClass,
+	// 	'menu_id' => 'main-nav',
+	// 	'depth' => 4,
+	// 	'walker' => new yani_nav_walker()
+	// ));
+
+	wp_nav_menu(
+		array(
+			'theme_location'	=> 'main-menu',
+			'depth'				=> 4,
+			'container'			=> 'div',
+			'container_class'	=> 'justify-content-lg-end collapse navbar-collapse' ,
+			'container_id'		=> 'navbarSupportedContent',
+			'menu_class'		=> 'navbar-nav',
+			'fallback_cb'		=> 'WP_Bootstrap_Navwalker::fallback',
+			'walker' 			=> new WP_Bootstrap_Navwalker()
+		)
+	);
+
 endif;
 ?>	

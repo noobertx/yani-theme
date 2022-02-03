@@ -11,7 +11,7 @@ Text Domain: yani
 Tags: translation-ready, simple
 
 */
-body{}
+/*body{}
 .screen-reader-text{
 	display:none;
 }
@@ -198,3 +198,4 @@ a.page-numbers {
     color: var(--color-theme-light);
 }
 
+*/

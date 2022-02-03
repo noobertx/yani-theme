@@ -22,7 +22,7 @@
 			</div>
 			<div class="top-bar-row top-bar-row-second clearfix">
 				<div class="menu-wrapper">
-                    <nav class="main-nav on-hover-menu navbar-expand-lg flex-grow-1">
+                    <nav class="main-nav on-hover-menu navbar-expand-lg flex-grow-1 navbar-dark bg-dark">
                         <?php get_template_part('template-parts/header/partials/nav'); ?>
                     </nav><!-- main-nav -->
                 </div>

@@ -41,7 +41,7 @@ We Need Actionbar Option
 <?php } ?>
 <div class="header_placeholder"></div>
 <?php if(_yani_theme()->get_header_style(true) != 'header-overlay'){ ?>
-<div id="top-bar" class="loading">
+<div id="top-bar" class="loading navbar-dark bg-dark">
     <div class="container">
         <div class="column one">
 
@@ -52,7 +52,7 @@ We Need Actionbar Option
 
                     <?php if(_yani_theme()->get_header_style(true) != 'header-simple'){ ?>
                         <div class="menu-wrapper">
-                            <nav class="main-nav on-hover-menu navbar-expand-lg flex-grow-1">
+                            <nav class="main-nav on-hover-menu navbar-expand-lg flex-grow-1 ">
                                 <?php get_template_part('template-parts/header/partials/nav'); ?>
                             </nav><!-- main-nav -->
                         </div>

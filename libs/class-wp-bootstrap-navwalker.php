@@ -8,7 +8,7 @@
  * Plugin Name: WP Bootstrap Navwalker
  * Plugin URI:  https://github.com/wp-bootstrap/wp-bootstrap-navwalker
  * Description: A custom WordPress nav walker class to implement the Bootstrap 4 navigation style in a custom theme using the WordPress built in menu manager.
- * Author: Edward McIntyre - @twittem, WP Bootstrap, William Patton - @pattonwebz
+ * Author: Edward McIntyre - @twittem, WP Bootstrap, William Patton - @pattonwebz, IanDelMar - @IanDelMar
  * Version: 4.3.0
  * Author URI: https://github.com/wp-bootstrap
  * GitHub Plugin URI: https://github.com/wp-bootstrap/wp-bootstrap-navwalker
@@ -147,7 +147,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			 * NOTE: linkmod and icon class arrays are passed by reference and
 			 * are maybe modified before being used later in this function.
 			 */
-			$classes = self::separate_linkmods_and_icons_from_classes( $classes, $linkmod_classes, $icon_classes, $depth );
+			$classes = $this->separate_linkmods_and_icons_from_classes( $classes, $linkmod_classes, $icon_classes, $depth );
 
 			// Join any icon classes plucked from $classes into a string.
 			$icon_class_string = join( ' ', $icon_classes );
@@ -212,12 +212,12 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 
 			// If the item has_children add atts to <a>.
 			if ( $this->has_children && 0 === $depth ) {
-				$atts['href']          = '#';
-				$atts['data-bs-toggle']   = 'dropdown';
-				$atts['aria-haspopup'] = 'true';
-				$atts['aria-expanded'] = 'false';
 				$atts['class']         = 'dropdown-toggle nav-link';
+				$atts['href']          = '#';
 				$atts['id']            = 'menu-item-dropdown-' . $item->ID;
+				$atts['role']   = 'button';
+				$atts['data-bs-toggle']   = 'dropdown';
+				$atts['aria-expanded'] = 'false';
 			} else {
 				if ( true === $this->has_schema ) {
 					$atts['itemprop'] = 'url';
@@ -235,7 +235,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			$atts['aria-current'] = $item->current ? 'page' : '';
 
 			// Update atts of this item based on any custom linkmod classes.
-			$atts = self::update_atts_for_linkmod_type( $atts, $linkmod_classes );
+			$atts = $this->update_atts_for_linkmod_type( $atts, $linkmod_classes );
 
 			// Allow filtering of the $atts array before using it.
 			$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
@@ -250,7 +250,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			}
 
 			// Set a typeflag to easily test if this is a linkmod or not.
-			$linkmod_type = self::get_linkmod_type( $linkmod_classes );
+			$linkmod_type = $this->get_linkmod_type( $linkmod_classes );
 
 			// START appending the internal item contents to the output.
 			$item_output = isset( $args->before ) ? $args->before : '';
@@ -261,7 +261,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			 */
 			if ( '' !== $linkmod_type ) {
 				// Is linkmod, output the required element opener.
-				$item_output .= self::linkmod_element_open( $linkmod_type, $attributes );
+				$item_output .= $this->linkmod_element_open( $linkmod_type, $attributes );
 			} else {
 				// With no link mod type set this must be a standard <a> tag.
 				$item_output .= '<a' . $attributes . '>';
@@ -295,7 +295,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 
 			// If the .sr-only class was set apply to the nav items text only.
 			if ( in_array( 'sr-only', $linkmod_classes, true ) ) {
-				$title         = self::wrap_for_screen_reader( $title );
+				$title         = $this->wrap_for_screen_reader( $title );
 				$keys_to_unset = array_keys( $linkmod_classes, 'sr-only', true );
 				foreach ( $keys_to_unset as $k ) {
 					unset( $linkmod_classes[ $k ] );
@@ -311,7 +311,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			 */
 			if ( '' !== $linkmod_type ) {
 				// Is linkmod, output the required closing element.
-				$item_output .= self::linkmod_element_close( $linkmod_type );
+				$item_output .= $this->linkmod_element_close( $linkmod_type );
 			} else {
 				// With no link mod type set this must be a standard <a> tag.
 				$item_output .= '</a>';
@@ -392,11 +392,12 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 		 * @return array $args The altered nav instance arguments.
 		 */
 		public function add_schema_to_navbar_ul( $args ) {
-			$wrap = $args['items_wrap'];
-			if ( strpos( $wrap, 'SiteNavigationElement' ) === false ) {
-				$args['items_wrap'] = preg_replace( '/(>).*>?\%3\$s/', ' itemscope itemtype="http://www.schema.org/SiteNavigationElement"$0', $wrap );
+			if ( isset( $args['items_wrap'] ) ) {
+				$wrap = $args['items_wrap'];
+				if ( strpos( $wrap, 'SiteNavigationElement' ) === false ) {
+					$args['items_wrap'] = preg_replace( '/(>).*>?\%3\$s/', ' itemscope itemtype="http://www.schema.org/SiteNavigationElement"$0', $wrap );
+				}
 			}
-
 			return $args;
 		}
 

@@ -126,12 +126,12 @@ function posts_custom_columns($column_name, $id){
 function filter_single_post_pagination($output, $format, $link, $post){
     $title = get_the_title($post);
     $url   = get_permalink($post->ID);
-    $class = 'btn btn-primary btn-lg my-2 text-limit ';
+    $class = 'btn btn-secondary my-2 text-limit ';
     $rel   = 'prev';
     $arrow = '&laquo;';
  
     if('next_post_link' === current_filter()){
-        $class = 'btn btn-primary btn-lg my-2 text-limit ';
+        $class = 'btn btn-secondary my-2 text-limit ';
         $rel   = 'next';
         $arrow = '&raquo;';
     return "<a href='$url' rel='$rel' class='$class'>$title $arrow  </a>";
