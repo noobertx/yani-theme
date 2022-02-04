@@ -199,3 +199,15 @@ a.page-numbers {
 }
 
 */
+
+.hero-content-wrap{
+	min-height:80vh;
+}
+
+.hero-content-wrap{
+	background-color: rgba(0,0,0,0.7);
+}
+
+main.main-container{
+	width:85%;
+}
