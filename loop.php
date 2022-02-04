@@ -9,7 +9,7 @@ global $custom_wprig_opt;
 	?>
 
 <?php if(have_posts()){ ?>
-	<section class="page-post-items">	
+	<section class="page-post-items container mx-auto ">	
 	<?php while(have_posts()){ ?>
 		<?php the_post(); ?>
 		<?php get_template_part('template-parts/post/content',get_post_format()); ?>
