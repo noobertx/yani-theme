@@ -18,6 +18,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</h1>
 		</header>
 	<?php endif; ?>
+
+
 	<div class="page-content">
 		<?php if ( have_posts() ) : ?>
 			<?php
