@@ -1,6 +1,6 @@
 
 
-<article >				
+<article <?php post_class(); ?>>				
 
 	<div class="post__inner">
 		

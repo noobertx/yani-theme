@@ -1,8 +1,8 @@
-<section>
+<section >
 	
 <article >				
 
-	<div class="post__inner">
+	<div class="post__inner <?php post_class(); ?>">
 		
 			<?php if(get_the_post_thumbnail() !== ""){ ?>
 				<div class="post__thumbnail">

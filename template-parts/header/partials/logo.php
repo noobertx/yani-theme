@@ -39,7 +39,16 @@ $logo_width = _yani_theme()->get_option('retina_logo_width');
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 			<?php if( !empty( $custom_logo ) ) { ?>
 				<img src="<?php echo esc_url( $custom_logo ); ?>" height="<?php echo esc_attr($logo_height); ?>" width="<?php echo esc_attr($logo_width); ?>" alt="logo">
-			<?php } ?>
+			<?php }else{ 
+					$custom_logo_id = get_theme_mod( 'custom_logo' );
+					$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+					 
+					if ( has_custom_logo() ) {
+					    echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . get_bloginfo( 'name' ) . '">';
+					} else {
+					    echo '<span class="h1">YANI</span>';
+					}
+				} ?>
 		</a>
 	</div>
 <?php } ?>

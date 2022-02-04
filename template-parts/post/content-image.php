@@ -1,4 +1,4 @@
-<article >				
+<article <?php post_class(); ?>>				
 	<div class="post__inner">
 		<div class="post__content">			
 			<?php the_content();?>

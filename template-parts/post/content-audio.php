@@ -4,7 +4,7 @@ $audio = get_media_embedded_in_content(get_the_content(),array('audio','iframe')
 
 ?>
 
-<article >				
+<article <?php post_class(); ?>>				
 
 	<div class="post__inner">
 		

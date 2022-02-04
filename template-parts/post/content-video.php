@@ -7,7 +7,7 @@ $content = apply_filters('the_content',get_the_content());
 
 <article >				
 
-	<div class="post__inner">		
+	<div class="post__inner <?php post_class(); ?>">		
 			<?php if(get_the_post_thumbnail() !== "" && empty($video)){ ?>
 				<div class="post__thumbnail">
 					<?php the_post_thumbnail('large');?>

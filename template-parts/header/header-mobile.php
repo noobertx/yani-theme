@@ -1,4 +1,4 @@
-<div id="header-mobile" class="header-mobile d-flex align-items-center" data-sticky="<?php echo _yani_theme()->get_option('mobile-menu-sticky', 0); ?>">
+<div id="header-mobile" class="header-mobile d-flex align-items-center d-lg-none" data-sticky="<?php echo _yani_theme()->get_option('mobile-menu-sticky', 0); ?> ">
 	<div class="header-mobile-left">
 		<button class="btn toggle-button-left">
 			<i class="yani-icon icon-navigation-menu"></i>

@@ -1,4 +1,4 @@
-<article >				
+<article <?php post_class(); ?>>				
 	<div>
 		Posted on 
 		<a href="<?php echo get_permalink()?>">

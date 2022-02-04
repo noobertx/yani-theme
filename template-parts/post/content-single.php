@@ -6,7 +6,7 @@
 	$author_description = get_the_author_meta('user_description');
 	$author_website = get_the_author_meta('user_url');
 ?>
-<section>
+<section <?php post_class(); ?>>
 	
 <article >
 	
