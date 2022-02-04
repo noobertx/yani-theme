@@ -12,6 +12,7 @@ $yani_local = _yani_theme()->get_text_domain();
 	<?php wp_head();?>
 </head>
 <body <?php body_class();?>>
+	<a href="#content" class="skip-link">Skip to Content</a>
 	<?php wp_body_open(); ?>
 
 
@@ -92,3 +93,4 @@ $yani_local = _yani_theme()->get_text_domain();
 ?>
 
 	<?php } ?>
+<div id="content" >

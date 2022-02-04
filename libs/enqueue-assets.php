@@ -14,7 +14,7 @@ function _themename_assets(){
 
 	wp_enqueue_style('bootstrap', YANI_THEME_VENDORS . 'bootstrap.min.css', array(), '5.5.0');
     wp_enqueue_style('bootstrap-select', YANI_THEME_VENDORS . 'bootstrap-select.min.css', array(), '1.13.18');
-    // wp_enqueue_style('font-awesome-5-all', YANI_THEME_VENDORS . 'font-awesome/css/all.min.css', array(), '5.14.0', 'all');
+    wp_enqueue_style('font-awesome-5-all', YANI_THEME_VENDORS . 'font-awesome/css/all.min.css', array(), '5.14.0', 'all');
     // wp_enqueue_style('yani-icons', YANI_THEME_VENDORS . 'icons'.$css_minify_prefix.'.css', array(), YANI_THEME_VERSION);
 
    wp_enqueue_script('bootstrap', YANI_THEME_VENDORS. 'bootstrap.min.js', array(), microtime(), true);
@@ -43,6 +43,7 @@ function _themename_assets(){
     
 
     wp_enqueue_script('bootstrap-select', YANI_THEME_VENDORS. 'bootstrap-select.min.js', array('jquery'), '1.13.18', true);
+    wp_enqueue_script('custom-2022', YANI_THEME_VENDORS. 'custom-2022.js', array('jquery'), microtime(), true);
     wp_enqueue_script('modernizr', YANI_THEME_VENDORS. 'modernizr.custom.js', array('jquery'), '3.2.0', true);
 
     wp_enqueue_script('parallax-background', YANI_THEME_VENDORS. 'parallax-background.min.js', array('jquery'), '1.2', true);
